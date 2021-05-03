@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import urllib.request
+import dict_url
 
 
 def xml_parse_url(url):
@@ -15,13 +16,6 @@ def xml_parse_url(url):
     return res
 
 
-def xml_parse(file):
-    xml_data = ET.parse(file)
-    res = []
-    for elem in xml_data.findall('Status'):
-        res.append(elem.text)
-    for elem in xml_data.findall('Free'):
-        res.append(elem.text)
-    for elem in xml_data.findall('Total'):
-        res.append(elem.text)
-    return(res)
+def parking_parse():
+    for parking, url in dict_url.dict_url().items():
+        return parking, xml_parse_url(url)

@@ -1,7 +1,7 @@
 import configparser
 
 
-def config():
+def dict_url():
     url = configparser.ConfigParser()
     url.read('url.ini')
     all_url = list(url['url'])
