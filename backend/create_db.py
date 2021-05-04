@@ -1,0 +1,24 @@
+from dict_url import dict_url
+import sqlite3
+
+
+def create_table():
+    create = """CREATE TABLE IF NOT EXISTS "Parking" (
+    "Nom"    TEXT ,
+    "Total"    TEXT,
+    "Free"    TEXT,
+    "Heure"    TEXT,
+    "Status"TEXT
+    );"""
+    c.execute(create)
+    for parking in dict_url().keys():
+        name_park = """INSERT INTO Parking (Nom) VALUES (?)"""
+        c.execute(name_park, (parking,))
+    conn.commit()
+
+
+if __name__ == "__main__":
+    conn = sqlite3.connect('parking.db')
+    c = conn.cursor()
+    create_table()
+    conn.commit()
