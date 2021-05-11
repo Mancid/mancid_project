@@ -22,7 +22,7 @@
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield1]][linkedin-url1]
 [![LinkedIn][linkedin-shield2]][linkedin-url2]
-[![MIT License][license-shield]][license-url]
+
 
 
 
@@ -210,12 +210,8 @@ Project Link: [https://github.com/Mancid/data_parking_montpellier](https://githu
 [contributors-url]: https://github.com/Mancid/data_parking_montpellier/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Mancid/data_parking_montpellier.svg?style=for-the-badge
 [forks-url]: https://github.com/Mancid/data_parking_montpellier/network/members
-[stars-shield]: https://img.shields.io/github/stars/Mancid/data_parking_montpellier.svg?style=for-the-badge
-[stars-url]: https://github.com/Mancid/data_parking_montpellier/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Mancid/data_parking_montpellier.svg?style=for-the-badge
 [issues-url]: https://github.com/Mancid/data_parking_montpellier/issues
-[license-shield]: https://img.shields.io/github/license/Mancid/data_parking_montpellier.svg?style=for-the-badge
-[license-url]: https://github.com/Mancid/data_parking_montpellier/blob/master/LICENSE.txt
 [linkedin-shield1]: https://img.shields.io/badge/-LinkedIn_Damien_Plantin-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-shield2]: https://img.shields.io/badge/-LinkedIn_Nicolas_Prodhomme-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url1]: https://www.linkedin.com/in/damienplantin/
