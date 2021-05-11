@@ -104,15 +104,11 @@ Pour mettre en place une copie locale et la faire fonctionner, suivez les étape
 Liste des logiciels et librairies nécessaires et leurs installtions :  
 * Python
   ```sh
-  For linux : sudo apt-get install python 3.6.8 
+  $ sudo apt-get install python 3.6.8 
   ```
-* Python
-
-    For Windows : [installer Python 3.6.8](https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe)
-
 * Virtualenv
   ```sh
-  pip install virtualenv
+  $ pip install virtualenv
   ```
 
 ### Installation
@@ -191,7 +187,7 @@ Project Link: [https://github.com/Mancid/data_parking_montpellier](https://githu
 
 
 <!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
+<!-- ## Acknowledgements
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 * [Img Shields](https://shields.io)
 * [Choose an Open Source License](https://choosealicense.com)
@@ -202,7 +198,7 @@ Project Link: [https://github.com/Mancid/data_parking_montpellier](https://githu
 * [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
 * [Sticky Kit](http://leafo.net/sticky-kit)
 * [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
+* [Font Awesome](https://fontawesome.com) -->
 
 
 
@@ -227,19 +223,4 @@ Project Link: [https://github.com/Mancid/data_parking_montpellier](https://githu
 [product-screenshot]: images/screenshot.png
 
 
-Pour activer flask :
 
-With linux or wsl :
-
-    $ export FLASK_APP=backend
-    $ flask run
-
-With cmd windows :
-
-    C:\path\to\app>set FLASK_APP=backend
-    C:\path\to\app>python -m flask run
-
-With PowerShell :
-
-    PS C:\path\to\app> $env:FLASK_APP = "backend"
-    PS C:\path\to\app> python -m flask run
