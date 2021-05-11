@@ -30,10 +30,10 @@
 <br />
 <p align="center">
   <a href="https://github.com/Mancid/data_parking_montpellier">
-    <img src="images/parking.jpg" alt="Logo" width="288" height="160">
+    <img src="images/parking.jpg" alt="Logo" width="432" height="240">
   </a>
     <a href="https://github.com/Mancid/data_parking_montpellier">
-    <img src="images/mtp.jpg" alt="Logo" width="213" height="160">
+    <img src="images/mtp.jpg" alt="Logo" width="319" height="240">
   </a>
   <h3 align="center">DATA PARKING MONTPELLIER</h3>
 
