@@ -19,5 +19,5 @@ def dict_url():
         parking = simple_url.capitalize()
         link = url['url'][simple_url]
         res[parking] = link
-    return res
     logging.info(f'this is the dict with keys and urls {res}')
+    return res
