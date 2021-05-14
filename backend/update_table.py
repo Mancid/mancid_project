@@ -1,5 +1,5 @@
-from create_dict_url import dict_url
-from parse_xml import xml_parse_url
+from .create_dict_url import dict_url
+from .parse_xml import xml_parse_url
 import sqlite3
 
 
