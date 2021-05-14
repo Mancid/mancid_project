@@ -1,4 +1,4 @@
-from .create_dict_url import *
+from backend.create_dict_url import *
 import sqlite3
 import logging
 
