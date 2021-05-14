@@ -1,4 +1,4 @@
-from dict_url import dict_url
+from create_dict_url import dict_url
 import sqlite3
 import logging
 
