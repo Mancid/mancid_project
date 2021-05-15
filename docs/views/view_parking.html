@@ -27,13 +27,13 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">from flask import jsonify
-from .function_db import all_infos
+from backend.database.function_db import function_table
 
 route = &#39;/api/parking&#39;
 
 
 def view():
-    parking, nom = all_infos()
+    parking, nom = function_table(&#39;parking.db&#39;)
     return jsonify(parking, nom)</code></pre>
 </details>
 </section>
@@ -54,7 +54,7 @@ def view():
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def view():
-    parking, nom = all_infos()
+    parking, nom = function_table(&#39;parking.db&#39;)
     return jsonify(parking, nom)</code></pre>
 </details>
 </dd>
