@@ -8,18 +8,18 @@
   <title>MyDispoParking</title>
 </head>
 <body>
-  <ul id='parking'>
+  <ul id='nom'>
     
   </ul>
   <script>
-    let ul = document.querySelector('ul#parking')
+    let ul = document.querySelector('ul#nom')
     fetch('/api/parking').then(data => {
       data.json().then(json => {
         console.log(json)
-        json.forEach(parking => {
+        json.forEach(nom => {
           let div = document.createElement('div')
           div.innerHTML = `<ul>
-            <li>${parking}</li>
+            <li>${nom}</li>
             </ul>`
           ul.append(div)
         })
