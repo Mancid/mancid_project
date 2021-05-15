@@ -1,9 +1,9 @@
 from flask import jsonify
-from .function_db import all_infos
+from backend.database.function_db import function_table
 
 route = '/api/parking'
 
 
 def view():
-    parking, nom = all_infos()
+    parking, nom = function_table('parking.db')
     return jsonify(parking, nom)
