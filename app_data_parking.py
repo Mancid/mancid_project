@@ -1,6 +1,6 @@
 import os
 import logging
-from flask import Flask, 
+from flask import Flask
 from apscheduler.schedulers.background import BackgroundScheduler
 
 logging.basicConfig(

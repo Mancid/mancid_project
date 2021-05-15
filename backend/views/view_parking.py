@@ -1,12 +1,9 @@
 from flask import jsonify
-from backend.dict_url import dict_url
-from backend.parse_xml import xml_parse_url
+from backend.database.function_db import function_table
 
 route = '/api/parking'
 
 
 def view():
-    res = {}
-    for parking, url in dict_url().items():
-        res[parking] = xml_parse_url(url)
-    return jsonify(res)
+    parking, nom = function_table('parking.db')
+    return jsonify(parking, nom)

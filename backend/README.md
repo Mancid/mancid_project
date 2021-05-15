@@ -127,9 +127,9 @@ Liste des logiciels et librairies nécessaires et leurs installtions :
    ```sh
    $ python -m virtualenv .venv
    ```
-4. Se placer dans un environnement virtuel
+4. Se palcer dans un environnement virtuel
    ```sh
-   $ . ./.venv/bin/activate
+   $ . .\.venv\bin\activate
    ```
 5. Install Python packages
    ```sh
@@ -181,7 +181,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Contributors - [@DamienPlantin](https://github.com/DamienPlantin) - [@Nico34000](https://github.com/Nico34000) - [@SarahTruffert](https://github.com/SarahTruffert)
+Contributors - [@DamienPlantin](https://github.com/DamienPlantin) - [@Nico34000](https://github.com/Nico34000)
 
 Project Link: [https://github.com/Mancid/data_parking_montpellier](https://github.com/Mancid/data_parking_montpellier)
 
@@ -215,7 +215,7 @@ Project Link: [https://github.com/Mancid/data_parking_montpellier](https://githu
 [issues-url]: https://github.com/Mancid/data_parking_montpellier/issues
 [linkedin-shield1]: https://img.shields.io/badge/-LinkedIn_Damien_Plantin-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-shield2]: https://img.shields.io/badge/-LinkedIn_Nicolas_Prodhomme-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-shield3]: https://img.shields.io/badge/-LinkedIn_SARAH_TRUFFERT-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-shield1]: https://img.shields.io/badge/-LinkedIn_SARAH_TRUFFERT-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url1]: https://www.linkedin.com/in/damienplantin/
 [linkedin-url2]: https://www.linkedin.com/in/nicolas-prodhomme-5578aa201/
 [linkedin-url3]: https://www.linkedin.com/in/sarah-truffert/
