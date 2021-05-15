@@ -1,4 +1,4 @@
-from fixtures import client
+from tests.fixtures import client
 
 
 def test_index(client):
