@@ -1,8 +1,8 @@
 from flask import render_template
 
-route = '/parking'
-disabled = False
+ROUTE = '/parking'
 
 
 def view():
-    return render_template('parking.html')
+  """Returns page parking.html"""
+  return render_template('parking.html')

@@ -1,7 +1,8 @@
 from flask import render_template
 
-route = '/'
+ROUTE = '/'
 
 
 def view():
-    return render_template('index.html')
+  """Returns page index.html"""
+  return render_template('index.html')
