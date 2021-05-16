@@ -49,9 +49,12 @@ def result_database(database):
 
 
 def parse_dict(mydict):
+  """ This function parse a dict
+  for get key and values
+  """
   for parking, value in mydict.items():
-    logging.info("this is your dict %s, %s",parking, value)
-    print(parking,value)
+    logging.info("this is your dict %s, %s", parking, value)
+    print(parking, value)
 
 
 def main():
