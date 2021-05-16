@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import urllib.request
 import logging
+from dict_url import dict_url
 
 
 def xml_parse_url(url):
@@ -13,18 +14,27 @@ def xml_parse_url(url):
     logging.debug(f"initializing the variable {open_url} for read the url")
     xml_data = ET.fromstring(open_url)
     logging.debug('transform the url in str')
-    res = []
+    res = {}
     for elem in xml_data.findall('Total'):
         logging.info(f"add value total {xml_data.findall('Total')}")
-        res.append(elem.text)
+        res['Total'] = elem.text
     for elem in xml_data.findall('Free'):
         logging.info(f"add value total {xml_data.findall('Free')}")
-        res.append(elem.text)
+        res['Free'] = elem.text
     for elem in xml_data.findall('DateTime'):
         logging.info(f"add value total {xml_data.findall('DateTime')}")
         elem = elem.text.split("T")[-1]
-        res.append(elem[0:8])
+        res['Heure'] = elem[0:8]
     for elem in xml_data.findall('Status'):
         logging.info(f"add value total {xml_data.findall('Status')}")
-        res.append(elem.text)
+        res['Status'] = elem.text
+    return res
+
+
+def create_dict(url):
+    mydict = {}
+    res = []
+    for parking, url in dict_url().items():
+        mydict[parking] = xml_parse_url(url)
+    res.append(mydict)
     return res
