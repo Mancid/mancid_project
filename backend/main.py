@@ -1,4 +1,4 @@
-# all the imports
+#pylint: disable=E1101
 import os
 import importlib
 from flask import Flask
