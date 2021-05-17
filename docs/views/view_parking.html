@@ -26,8 +26,7 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from flask import jsonify
-from backend.database.function_db import function_table
+<pre><code class="python">from backend.database.db_mongo import main
 
 ROUTE = &#39;/api/parking&#39;
 
@@ -36,8 +35,7 @@ def view():
   &#34;&#34;&#34;
   Returns page parking.html in json
   &#34;&#34;&#34;
-  parking = function_table(&#39;parking.db&#39;)
-  return jsonify(parking)</code></pre>
+  return main()</code></pre>
 </details>
 </section>
 <section>
@@ -60,8 +58,7 @@ def view():
   &#34;&#34;&#34;
   Returns page parking.html in json
   &#34;&#34;&#34;
-  parking = function_table(&#39;parking.db&#39;)
-  return jsonify(parking)</code></pre>
+  return main()</code></pre>
 </details>
 </dd>
 </dl>

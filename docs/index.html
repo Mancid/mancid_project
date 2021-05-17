@@ -27,17 +27,16 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">from flask import Flask
-from backend.database.create_db import create_table
-from backend.database.update_db import update_table
+from backend.database.db_mongo import main
 APP = Flask(__name__)
 
 
 @APP.cli.command(&#39;initdb&#39;)
 def initdb_command():
   &#34;&#34;&#34;Initializes the database.&#34;&#34;&#34;
-  create_table(&#39;Parking.db&#39;)
-  update_table(&#39;Parking.db&#39;)
-  print(&#39;Initialized the database.&#39;)</code></pre>
+  print(&#39;Start of database initialization&#39;)
+  main()
+  print(&#39;The initialization of the database is completed&#39;)</code></pre>
 </details>
 </section>
 <section>
