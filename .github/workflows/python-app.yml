@@ -28,7 +28,7 @@ jobs:
         
     - name: auto pdoc
       env : 
-        {{ secret.GIT_TOKEN }}
+        secret = {{ secret.GIT_TOKEN }}
       run: |
         pdoc3 --html -o tmp backend/
         rm -rf docs
