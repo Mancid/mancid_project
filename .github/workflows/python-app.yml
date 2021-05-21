@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt;
         
     - name: auto pdoc
-      env : 
+      env : |
         HOST_MONGO_DB: {{ secrets.HOST_MONGO_DB }}
         PASSWORD_MONGO_DB: {{ secrets.PASSWORD_MONGO_DB }}
         SERVER_MONGO_DB: {{ secrets.SERVER_MONGO_DB }}
@@ -37,7 +37,7 @@ jobs:
         mkdir -p docs/
         mv tmp/backend/* docs/
         rm -rf tmp/
-     with:
+      with: |
         HOST_MONGO_DB: {{ secrets.HOST_MONGO_DB }}
         PASSWORD_MONGO_DB: {{ secrets.PASSWORD_MONGO_DB }}
         SERVER_MONGO_DB: {{ secrets.SERVER_MONGO_DB }}
