@@ -1,16 +1,22 @@
 #pylint: disable=E0401
 import logging
+import os
 from pymongo import MongoClient
 from backend.function.parse_xml import create_dict
 from backend.function.dict_url import dict_url
 
 
-def create_database():
+host = os.environ['HOST_MONGO_DB']
+password = os.environ['PASSWORD_MONGO_DB']
+server = os.environ['SERVER_MONGO_DB']
+
+
+def connect_db():
   """ This function connect in localhost a mongodb
   """
-  client = MongoClient(host="localhost", port=27017, serverSelectionTimeoutMS=100000)
+  client = MongoClient(f"mongodb+srv://{host}:{password}@{server}")
   logging.info(" %s client : ", client)
-  conn = client["database"]
+  conn = client.test
   logging.info(" your database : %s", conn)
   database = conn['Parking']
   return database
@@ -64,12 +70,8 @@ def main():
   all other functions
   """
 
-  my_db = create_database()
+  my_db = connect_db()
   remove(my_db)
   insert_rows(my_db)
   my_dict = result_database(my_db)
   parse_dict(my_dict)
-
-
-# if __name__ == '__main__':
-#   main()
