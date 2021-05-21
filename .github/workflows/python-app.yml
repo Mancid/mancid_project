@@ -48,4 +48,6 @@ jobs:
       if: github.ref == 'refs/heads/main'
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        HOST_MONGO_DB: {{ secrets.HOST_MONGO_DB }}
+        PASSWORD_MONGO_DB: {{ secrets.PASSWORD_MONGO_DB }}
+        SERVER_MONGO_DB: {{ secrets.SERVER_MONGO_DB }}
