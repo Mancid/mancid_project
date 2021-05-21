@@ -32,7 +32,6 @@ def insert_rows(database):
   return database.insert(values)
 
 
-
 def remove(database):
   """ This function remove all rows in database mongodatabase
   """
@@ -52,7 +51,6 @@ def result_database(database):
       res[parking] = rows.get(i)
   logging.info("this is your dict with the value in db %s", res)
   return dict(sorted(res.items()))
-
 
 
 def parse_dict(mydict):
