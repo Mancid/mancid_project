@@ -12,7 +12,7 @@ server = os.environ['SERVER_MONGO_DB']
 
 
 def connect_db():
-  """ This function connect in localhost a mongodb
+  """ This function connect in atlas a mongodb
   """
   client = MongoClient(f"mongodb+srv://{host}:{password}@{server}")
   logging.info(" %s client : ", client)
