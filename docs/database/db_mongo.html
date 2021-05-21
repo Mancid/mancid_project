@@ -28,17 +28,23 @@
 </summary>
 <pre><code class="python">#pylint: disable=E0401
 import logging
+import os
 from pymongo import MongoClient
 from backend.function.parse_xml import create_dict
 from backend.function.dict_url import dict_url
 
 
-def create_database():
+host = os.environ[&#39;HOST_MONGO_DB&#39;]
+password = os.environ[&#39;PASSWORD_MONGO_DB&#39;]
+server = os.environ[&#39;SERVER_MONGO_DB&#39;]
+
+
+def connect_db():
   &#34;&#34;&#34; This function connect in localhost a mongodb
   &#34;&#34;&#34;
-  client = MongoClient(host=&#34;localhost&#34;, port=27017, serverSelectionTimeoutMS=100000)
+  client = MongoClient(f&#34;mongodb+srv://{host}:{password}@{server}&#34;)
   logging.info(&#34; %s client : &#34;, client)
-  conn = client[&#34;database&#34;]
+  conn = client.test
   logging.info(&#34; your database : %s&#34;, conn)
   database = conn[&#39;Parking&#39;]
   return database
@@ -52,7 +58,6 @@ def insert_rows(database):
   values = create_dict(dict_url())
   logging.info(&#34;%s this is the values add in database&#34;, values)
   return database.insert(values)
-
 
 
 def remove(database):
@@ -76,7 +81,6 @@ def result_database(database):
   return dict(sorted(res.items()))
 
 
-
 def parse_dict(mydict):
   &#34;&#34;&#34; This function parse a dict
   for get key and values
@@ -92,15 +96,11 @@ def main():
   all other functions
   &#34;&#34;&#34;
 
-  my_db = create_database()
+  my_db = connect_db()
   remove(my_db)
   insert_rows(my_db)
   my_dict = result_database(my_db)
-  parse_dict(my_dict)
-
-
-# if __name__ == &#39;__main__&#39;:
-#   main()</code></pre>
+  parse_dict(my_dict)</code></pre>
 </details>
 </section>
 <section>
@@ -110,8 +110,8 @@ def main():
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="backend.database.db_mongo.create_database"><code class="name flex">
-<span>def <span class="ident">create_database</span></span>(<span>)</span>
+<dt id="backend.database.db_mongo.connect_db"><code class="name flex">
+<span>def <span class="ident">connect_db</span></span>(<span>)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>This function connect in localhost a mongodb</p></div>
@@ -119,12 +119,12 @@ def main():
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def create_database():
+<pre><code class="python">def connect_db():
   &#34;&#34;&#34; This function connect in localhost a mongodb
   &#34;&#34;&#34;
-  client = MongoClient(host=&#34;localhost&#34;, port=27017, serverSelectionTimeoutMS=100000)
+  client = MongoClient(f&#34;mongodb+srv://{host}:{password}@{server}&#34;)
   logging.info(&#34; %s client : &#34;, client)
-  conn = client[&#34;database&#34;]
+  conn = client.test
   logging.info(&#34; your database : %s&#34;, conn)
   database = conn[&#39;Parking&#39;]
   return database</code></pre>
@@ -167,7 +167,7 @@ all other functions</p></div>
   all other functions
   &#34;&#34;&#34;
 
-  my_db = create_database()
+  my_db = connect_db()
   remove(my_db)
   insert_rows(my_db)
   my_dict = result_database(my_db)
@@ -251,7 +251,7 @@ name in parking. They return a dict</p></div>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="two-column">
-<li><code><a title="backend.database.db_mongo.create_database" href="#backend.database.db_mongo.create_database">create_database</a></code></li>
+<li><code><a title="backend.database.db_mongo.connect_db" href="#backend.database.db_mongo.connect_db">connect_db</a></code></li>
 <li><code><a title="backend.database.db_mongo.insert_rows" href="#backend.database.db_mongo.insert_rows">insert_rows</a></code></li>
 <li><code><a title="backend.database.db_mongo.main" href="#backend.database.db_mongo.main">main</a></code></li>
 <li><code><a title="backend.database.db_mongo.parse_dict" href="#backend.database.db_mongo.parse_dict">parse_dict</a></code></li>
