@@ -26,7 +26,7 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from backend.database.db_mongo import main
+<pre><code class="python">from backend.database.db_mongo import result_database
 
 ROUTE = &#39;/api/parking&#39;
 
@@ -35,7 +35,7 @@ def view():
   &#34;&#34;&#34;
   Returns page parking.html in json
   &#34;&#34;&#34;
-  return main()</code></pre>
+  return result_database(&#39;test.Parking&#39;)</code></pre>
 </details>
 </section>
 <section>
@@ -58,7 +58,7 @@ def view():
   &#34;&#34;&#34;
   Returns page parking.html in json
   &#34;&#34;&#34;
-  return main()</code></pre>
+  return result_database(&#39;test.Parking&#39;)</code></pre>
 </details>
 </dd>
 </dl>
