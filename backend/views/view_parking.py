@@ -1,4 +1,4 @@
-from backend.database.db_mongo import main
+from backend.database.db_mongo import result_database
 
 ROUTE = '/api/parking'
 
@@ -7,4 +7,4 @@ def view():
   """
   Returns page parking.html in json
   """
-  return main()
+  return result_database('test.Parking')
