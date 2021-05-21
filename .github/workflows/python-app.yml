@@ -28,7 +28,7 @@ jobs:
         
     - name: auto pdoc
       env: |
-        HOST_MONGO_DB: {{ secrets.HOST_MONGO_DB }}
+        HOST_MONGO_DB: ""
         PASSWORD_MONGO_DB: {{ secrets.PASSWORD_MONGO_DB }}
         SERVER_MONGO_DB: {{ secrets.SERVER_MONGO_DB }}
       run: |
