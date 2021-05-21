@@ -27,6 +27,8 @@ jobs:
         pip install -r requirements.txt;
         
     - name: auto pdoc
+      env : 
+        {{ secret.GIT_TOKEN }}
       run: |
         pdoc3 --html -o tmp backend/
         rm -rf docs
