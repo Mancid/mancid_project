@@ -3,4 +3,4 @@ flake8
 pytest
 flask
 flask-cors
-pymongo
+pymongo[tls, srv]
