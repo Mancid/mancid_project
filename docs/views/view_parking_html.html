@@ -26,14 +26,20 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from flask import render_template
+<pre><code class="python">from jinja2 import Template
+from backend.database.db_mongo import result_database
+from backend.database.db_mongo import connect_db
+
 
 ROUTE = &#39;/parking&#39;
 
 
 def view():
-  &#34;&#34;&#34;Returns page parking.html&#34;&#34;&#34;
-  return render_template(&#39;parking.html&#39;)</code></pre>
+  parkings = result_database(connect_db())
+  with open(&#34;front/parking.html&#34;) as file_:
+    template = Template(file_.read())
+    result = template.render(parkings=parkings)
+  return result</code></pre>
 </details>
 </section>
 <section>
@@ -47,14 +53,17 @@ def view():
 <span>def <span class="ident">view</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Returns page parking.html</p></div>
+<div class="desc"></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def view():
-  &#34;&#34;&#34;Returns page parking.html&#34;&#34;&#34;
-  return render_template(&#39;parking.html&#39;)</code></pre>
+  parkings = result_database(connect_db())
+  with open(&#34;front/parking.html&#34;) as file_:
+    template = Template(file_.read())
+    result = template.render(parkings=parkings)
+  return result</code></pre>
 </details>
 </dd>
 </dl>
