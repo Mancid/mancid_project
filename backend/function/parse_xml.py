@@ -17,10 +17,10 @@ def xml_parse_url(url):
   res = {}
   for elem in xml_data.findall("Total"):
     logging.info("add value total %s", xml_data.findall("Total"))
-    res["Total"] = elem.text
+    res["Total"] = int(elem.text)
   for elem in xml_data.findall("Free"):
     logging.info("add value total %s", xml_data.findall("Free"))
-    res["Free"] = elem.text
+    res["Free"] = int(elem.text)
   for elem in xml_data.findall("Status"):
     logging.info("add value total %s", xml_data.findall("Status"))
     res["Status"] = elem.text
