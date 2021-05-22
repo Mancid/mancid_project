@@ -14,7 +14,8 @@ server = os.environ['SERVER_MONGO_DB']
 def connect_db():
   """ This function connect in atlas a mongodb
   """
-  client = MongoClient(f"mongodb+srv://{host}:{password}@{server}?ssl=true&ssl_cert_reqs=CERT_NONE")
+  client = MongoClient(f"mongodb+srv://{host}:{password}@{server}"\
+                        "?ssl=true&ssl_cert_reqs=CERT_NONE")
   logging.info(" %s client : ", client)
   conn = client.test
   logging.info(" your database : %s", conn)
@@ -53,23 +54,12 @@ def result_database(database):
   return dict(sorted(res.items()))
 
 
-def parse_dict(mydict):
-  """ This function parse a dict
-  for get key and values
-  """
-  for parking, value in mydict.items():
-    logging.info("this is your dict %s, %s", parking, value)
-    print(parking, value)
-
-
 def main():
   """
   This is the main function to call
   all other functions
   """
-
   my_db = connect_db()
   remove(my_db)
   insert_rows(my_db)
-  my_dict = result_database(my_db)
-  parse_dict(my_dict)
+  result_database(my_db)
