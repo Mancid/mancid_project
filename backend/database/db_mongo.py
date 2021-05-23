@@ -5,7 +5,6 @@ from pymongo import MongoClient
 from backend.function.parse_xml import create_dict
 from backend.function.dict_url import dict_url
 
-
 host = os.environ["HOST_MONGO_DB"]
 password = os.environ["PASSWORD_MONGO_DB"]
 server = os.environ["SERVER_MONGO_DB"]
@@ -54,12 +53,14 @@ def result_database(database):
   return dict(sorted(res.items()))
 
 
-def main():
+def main_db():
   """
   This is the main function to call
   all other functions
   """
+  print("[*]Start of database initialization")
   my_db = connect_db()
   remove(my_db)
   insert_rows(my_db)
   result_database(my_db)
+  print("[*]The initialization of the database is completed")
