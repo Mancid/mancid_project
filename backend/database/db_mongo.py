@@ -14,7 +14,7 @@ def connect_db():
   """ This function connect in atlas a mongodb
   """
   client = MongoClient(f"mongodb+srv://{host}:{password}@{server}"\
-                        "?ssl=true&ssl_cert_reqs=CERT_NONE")
+                        "/?ssl=true&ssl_cert_reqs=CERT_NONE")
   logging.info(" %s client : ", client)
   conn = client.test
   logging.info(" your database : %s", conn)
