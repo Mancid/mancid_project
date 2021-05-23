@@ -20,10 +20,13 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
+[![pull-request][pull-request-shield]][pull-request-url]
 [![LinkedIn][linkedin-shield1]][linkedin-url1]
 [![LinkedIn][linkedin-shield2]][linkedin-url2]
 [![LinkedIn][linkedin-shield3]][linkedin-url3]
 [![CI][CI-shield]][CI-url]
+[![LS][LS-shield]][LS-url]
+
 
 
 
@@ -213,6 +216,8 @@ Project Link: [https://github.com/Mancid/data_parking_montpellier](https://githu
 [forks-url]: https://github.com/Mancid/data_parking_montpellier/network/members
 [issues-shield]: https://img.shields.io/github/issues/Mancid/data_parking_montpellier.svg?style=for-the-badge
 [issues-url]: https://github.com/Mancid/data_parking_montpellier/issues
+[pull-request-shield]: https://img.shields.io/github/issues-pr/Mancid/data_parking_montpellier?style=for-the-badge
+[pull-request-url]: https://github.com/Mancid/data_parking_montpellier/pulls
 [linkedin-shield1]: https://img.shields.io/badge/-LinkedIn_Damien_Plantin-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-shield2]: https://img.shields.io/badge/-LinkedIn_Nicolas_Prodhomme-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-shield3]: https://img.shields.io/badge/-LinkedIn_SARAH_TRUFFERT-black.svg?style=for-the-badge&logo=linkedin&colorB=555
@@ -220,5 +225,9 @@ Project Link: [https://github.com/Mancid/data_parking_montpellier](https://githu
 [linkedin-url2]: https://www.linkedin.com/in/nicolas-prodhomme-5578aa201/
 [linkedin-url3]: https://www.linkedin.com/in/sarah-truffert/
 [product-screenshot]: images/screenshot.png
-[CI-shield]:https://img.shields.io/github/CI/Mancid/data_parking_montpellier.svg?style=for-the-badge
-[CI-url]:https://github.com/Mancid/data_parking_montpellier/actions?query=workflow%3ACI
+[CI-shield]:https://img.shields.io/travis/com/mancid/data_parking_montpellier?style=for-the-badge
+[CI-url]:https://github.com/Mancid/data_parking_montpellier/actions
+[LS-shield]:https://img.shields.io/github/last-commit/Mancid/data_parking_montpellier?style=for-the-badge
+[LS-url]:https://github.com/Mancid/data_parking_montpellier/commits/main
+
+https://img.shields.io/github/workflow/status/mancid/data_parking_montpellier/passing

@@ -61,7 +61,7 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
-disable=C0114
+disable=C0114,R0201,E0401,W1114
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
@@ -97,7 +97,7 @@ score=yes
 [REFACTORING]
 
 # Maximum number of nested blocks for function / method body
-max-nested-blocks=2
+max-nested-blocks=3
 
 # Complete name of functions that never returns. When checking for
 # inconsistent-return-statements if a never returning function is called then
@@ -405,10 +405,10 @@ max-bool-expr=3
 
 # https://pycodequ.al/docs/pylint-messages/r0912-too-many-branches.html
 # Maximum number of branch for function / method body.
-max-branches=3
+max-branches=4
 
 # Maximum number of locals for function / method body.
-max-locals=5
+max-locals=9 # 4 argument and 5 local variables.
 
 # Maximum number of parents for a class (see R0901).
 max-parents=3
