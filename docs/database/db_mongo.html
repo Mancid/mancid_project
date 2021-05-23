@@ -34,9 +34,9 @@ from backend.function.parse_xml import create_dict
 from backend.function.dict_url import dict_url
 
 
-host = os.environ[&#39;HOST_MONGO_DB&#39;]
-password = os.environ[&#39;PASSWORD_MONGO_DB&#39;]
-server = os.environ[&#39;SERVER_MONGO_DB&#39;]
+host = os.environ[&#34;HOST_MONGO_DB&#34;]
+password = os.environ[&#34;PASSWORD_MONGO_DB&#34;]
+server = os.environ[&#34;SERVER_MONGO_DB&#34;]
 
 
 def connect_db():
@@ -47,7 +47,7 @@ def connect_db():
   logging.info(&#34; %s client : &#34;, client)
   conn = client.test
   logging.info(&#34; your database : %s&#34;, conn)
-  database = conn[&#39;Parking&#39;]
+  database = conn[&#34;Parking&#34;]
   return database
 
 
@@ -117,7 +117,7 @@ def main():
   logging.info(&#34; %s client : &#34;, client)
   conn = client.test
   logging.info(&#34; your database : %s&#34;, conn)
-  database = conn[&#39;Parking&#39;]
+  database = conn[&#34;Parking&#34;]
   return database</code></pre>
 </details>
 </dd>

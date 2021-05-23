@@ -39,13 +39,13 @@ def dict_url():
   &#34;&#34;&#34;
   url = configparser.ConfigParser()
   logging.debug(&#34;initializing the variable url&#34;)
-  url.read(&#39;url.ini&#39;)
+  url.read(&#34;url.ini&#34;)
   logging.debug(&#34;read the file&#34;)
-  logging.debug(&#34;all url in file %s&#34;, list(url[&#39;url&#39;]))
+  logging.debug(&#34;all url in file %s&#34;, list(url[&#34;url&#34;]))
   res = {}
-  for simple_url in list(url[&#39;url&#39;]):
+  for simple_url in list(url[&#34;url&#34;]):
     parking = simple_url.capitalize()
-    link = url[&#39;url&#39;][simple_url]
+    link = url[&#34;url&#34;][simple_url]
     res[parking] = link
   logging.info(&#34;this is the dict with keys and urls %s&#34;, res)
   return res</code></pre>
@@ -79,13 +79,13 @@ the xml</p></div>
   &#34;&#34;&#34;
   url = configparser.ConfigParser()
   logging.debug(&#34;initializing the variable url&#34;)
-  url.read(&#39;url.ini&#39;)
+  url.read(&#34;url.ini&#34;)
   logging.debug(&#34;read the file&#34;)
-  logging.debug(&#34;all url in file %s&#34;, list(url[&#39;url&#39;]))
+  logging.debug(&#34;all url in file %s&#34;, list(url[&#34;url&#34;]))
   res = {}
-  for simple_url in list(url[&#39;url&#39;]):
+  for simple_url in list(url[&#34;url&#34;]):
     parking = simple_url.capitalize()
-    link = url[&#39;url&#39;][simple_url]
+    link = url[&#34;url&#34;][simple_url]
     res[parking] = link
   logging.info(&#34;this is the dict with keys and urls %s&#34;, res)
   return res</code></pre>

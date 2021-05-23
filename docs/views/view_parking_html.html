@@ -31,10 +31,13 @@ from backend.database.db_mongo import result_database
 from backend.database.db_mongo import connect_db
 
 
-ROUTE = &#39;/parking&#39;
+ROUTE = &#34;/parking&#34;
 
 
 def view():
+  &#34;&#34;&#34;
+  This function return parkings in jinja2 in the front
+  &#34;&#34;&#34;
   parkings = result_database(connect_db())
   with open(&#34;front/parking.html&#34;) as file_:
     template = Template(file_.read())
@@ -53,12 +56,15 @@ def view():
 <span>def <span class="ident">view</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>This function return parkings in jinja2 in the front</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def view():
+  &#34;&#34;&#34;
+  This function return parkings in jinja2 in the front
+  &#34;&#34;&#34;
   parkings = result_database(connect_db())
   with open(&#34;front/parking.html&#34;) as file_:
     template = Template(file_.read())

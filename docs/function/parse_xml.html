@@ -41,21 +41,17 @@ def xml_parse_url(url):
   open_url = urllib.request.urlopen(url).read()
   logging.debug(&#34;initializing the variable %s for read the url&#34;, open_url)
   xml_data = ET.fromstring(open_url)
-  logging.debug(&#39;transform the url in str&#39;)
+  logging.debug(&#34;transform the url in str&#34;)
   res = {}
-  for elem in xml_data.findall(&#39;Total&#39;):
-    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#39;Total&#39;))
-    res[&#39;Total&#39;] = elem.text
-  for elem in xml_data.findall(&#39;Free&#39;):
-    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#39;Free&#39;))
-    res[&#39;Free&#39;] = elem.text
-  for elem in xml_data.findall(&#39;DateTime&#39;):
-    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#39;DateTime&#39;))
-    elem = elem.text.split(&#34;T&#34;)[-1]
-    res[&#39;Heure&#39;] = elem[0:8]
-  for elem in xml_data.findall(&#39;Status&#39;):
-    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#39;Status&#39;))
-    res[&#39;Status&#39;] = elem.text
+  for elem in xml_data.findall(&#34;Total&#34;):
+    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#34;Total&#34;))
+    res[&#34;Total&#34;] = int(elem.text)
+  for elem in xml_data.findall(&#34;Free&#34;):
+    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#34;Free&#34;))
+    res[&#34;Free&#34;] = int(elem.text)
+  for elem in xml_data.findall(&#34;Status&#34;):
+    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#34;Status&#34;))
+    res[&#34;Status&#34;] = elem.text
   return res
 
 
@@ -64,11 +60,9 @@ def create_dict(url):
   This function return a dict
   &#34;&#34;&#34;
   mydict = {}
-  res = []
   for parking, url in dict_url().items():
     mydict[parking] = xml_parse_url(url)
-  res.append(mydict)
-  return res</code></pre>
+  return mydict</code></pre>
 </details>
 </section>
 <section>
@@ -92,11 +86,9 @@ def create_dict(url):
   This function return a dict
   &#34;&#34;&#34;
   mydict = {}
-  res = []
   for parking, url in dict_url().items():
     mydict[parking] = xml_parse_url(url)
-  res.append(mydict)
-  return res</code></pre>
+  return mydict</code></pre>
 </details>
 </dd>
 <dt id="backend.function.parse_xml.xml_parse_url"><code class="name flex">
@@ -120,21 +112,17 @@ result in list</p></div>
   open_url = urllib.request.urlopen(url).read()
   logging.debug(&#34;initializing the variable %s for read the url&#34;, open_url)
   xml_data = ET.fromstring(open_url)
-  logging.debug(&#39;transform the url in str&#39;)
+  logging.debug(&#34;transform the url in str&#34;)
   res = {}
-  for elem in xml_data.findall(&#39;Total&#39;):
-    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#39;Total&#39;))
-    res[&#39;Total&#39;] = elem.text
-  for elem in xml_data.findall(&#39;Free&#39;):
-    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#39;Free&#39;))
-    res[&#39;Free&#39;] = elem.text
-  for elem in xml_data.findall(&#39;DateTime&#39;):
-    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#39;DateTime&#39;))
-    elem = elem.text.split(&#34;T&#34;)[-1]
-    res[&#39;Heure&#39;] = elem[0:8]
-  for elem in xml_data.findall(&#39;Status&#39;):
-    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#39;Status&#39;))
-    res[&#39;Status&#39;] = elem.text
+  for elem in xml_data.findall(&#34;Total&#34;):
+    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#34;Total&#34;))
+    res[&#34;Total&#34;] = int(elem.text)
+  for elem in xml_data.findall(&#34;Free&#34;):
+    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#34;Free&#34;))
+    res[&#34;Free&#34;] = int(elem.text)
+  for elem in xml_data.findall(&#34;Status&#34;):
+    logging.info(&#34;add value total %s&#34;, xml_data.findall(&#34;Status&#34;))
+    res[&#34;Status&#34;] = elem.text
   return res</code></pre>
 </details>
 </dd>

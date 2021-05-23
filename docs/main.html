@@ -39,15 +39,15 @@ def create_app(config_name):
   views = []
   current_directory = os.path.dirname(os.path.realpath(__file__))
 
-  for filename in os.listdir(current_directory + &#39;/views&#39;):
+  for filename in os.listdir(current_directory + &#34;/views&#34;):
     if filename.endswith(&#34;.py&#34;) and filename.startswith(&#34;view_&#34;):
       views.append(filename[5:-3])
 
   for view in views:
-    mod = importlib.import_module(f&#39;backend.views.view_{view}&#39;)
-    # if getattr(mod, &#39;disabled&#39;, None):
+    mod = importlib.import_module(f&#34;backend.views.view_{view}&#34;)
+    # if getattr(mod, &#34;disabled&#34;, None):
     #   continue
-    print(f&#39;[*]Loading view {view} with route {mod.ROUTE}&#39;)
+    print(f&#34;[*]Loading view {view} with route {mod.ROUTE}&#34;)
     app.add_url_rule(mod.ROUTE, view, view_func=mod.view)
 
   return app</code></pre>
@@ -76,15 +76,15 @@ def create_app(config_name):
   views = []
   current_directory = os.path.dirname(os.path.realpath(__file__))
 
-  for filename in os.listdir(current_directory + &#39;/views&#39;):
+  for filename in os.listdir(current_directory + &#34;/views&#34;):
     if filename.endswith(&#34;.py&#34;) and filename.startswith(&#34;view_&#34;):
       views.append(filename[5:-3])
 
   for view in views:
-    mod = importlib.import_module(f&#39;backend.views.view_{view}&#39;)
-    # if getattr(mod, &#39;disabled&#39;, None):
+    mod = importlib.import_module(f&#34;backend.views.view_{view}&#34;)
+    # if getattr(mod, &#34;disabled&#34;, None):
     #   continue
-    print(f&#39;[*]Loading view {view} with route {mod.ROUTE}&#39;)
+    print(f&#34;[*]Loading view {view} with route {mod.ROUTE}&#34;)
     app.add_url_rule(mod.ROUTE, view, view_func=mod.view)
 
   return app</code></pre>
