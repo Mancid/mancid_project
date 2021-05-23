@@ -4,3 +4,4 @@ pytest
 flask
 flask-cors
 pymongo[tls, srv]
+jinja2
