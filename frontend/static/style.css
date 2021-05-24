@@ -1,0 +1,26 @@
+.navbar-item{
+  font-size:large;
+  margin-right: 1px;
+  margin-left: 15px;
+  }
+.progress{
+  width:300px !important;
+  height:10px !important;
+  background-color:#02b875;
+}
+.badge.bg-primary{
+  margin-top: 50px;
+  margin-left: 30px;
+  line-height: 3;
+  font-size:1em;
+}
+.bg-success {
+  background-color: #cd0200 !important
+}
+#dispo.badge.bg-success {
+  background-color: #02b875 !important ;}
+
+.hero.is-primary {
+  background-color: #3459e6;
+    color: #fff;
+  }

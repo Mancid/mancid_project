@@ -5,17 +5,16 @@ from pymongo import MongoClient
 from backend.function.parse_xml import create_dict
 from backend.function.dict_url import dict_url
 
+HOST = os.environ["HOST_MONGO_DB"]
+PASSWORD = os.environ["PASSWORD_MONGO_DB"]
+SERVER = os.environ["SERVER_MONGO_DB"]
 
-host = os.environ.get("HOST_MONGO_DB")
-password = os.environ.get("PASSWORD_MONGO_DB")
-server = os.environ.get("SERVER_MONGO_DB")
 
-
-def connect_db():
+def connect_db(host, password, server):
   """ This function connect in atlas a mongodb
   """
-  client = MongoClient(f"mongodb+srv://{host}:{password}@{server}"\
-                        "?ssl=true&ssl_cert_reqs=CERT_NONE")
+  client = MongoClient(f"mongodb+srv://{host}:{password}@{server}?ssl=true&"\
+                       "ssl_cert_reqs=CERT_NONE")
   logging.info(" %s client : ", client)
   conn = client.test
   logging.info(" your database : %s", conn)
@@ -54,14 +53,14 @@ def result_database(database):
   return dict(sorted(res.items()))
 
 
-def main():
+def main_db():
   """
   This is the main function to call
   all other functions
   """
-  print("Start of database initialization")
-  my_db = connect_db()
+  print("[*]Start of database initialization")
+  my_db = connect_db(HOST, PASSWORD, SERVER)
   remove(my_db)
   insert_rows(my_db)
   result_database(my_db)
-  print("The initialization of the database is completed")
+  print("[*]The initialization of the database is completed")

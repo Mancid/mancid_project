@@ -26,31 +26,49 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">#pylint: disable=E1101
-import os
-import importlib
-from flask import Flask
+<pre><code class="python"># main.py
+
+from datetime import datetime
+from flask import Blueprint, render_template
+from flask_login import login_required, current_user
+from jinja2 import Template
+from apscheduler.schedulers.background import BackgroundScheduler
+from backend.database.db_mongo import result_database, connect_db, main_db
+from backend.database.db_mongo import HOST, PASSWORD, SERVER
 
 
-def create_app(config_name):
-  &#34;&#34;&#34;Create and configure an instance of the Flask application.&#34;&#34;&#34;
-  app = Flask(__name__)
+MAIN = Blueprint(&#39;main&#39;, __name__)
+SCHED = BackgroundScheduler(daemon=True)
+SCHED.start()
+SCHED.add_job(main_db, &#39;interval&#39;, seconds=59)
 
-  views = []
-  current_directory = os.path.dirname(os.path.realpath(__file__))
 
-  for filename in os.listdir(current_directory + &#34;/views&#34;):
-    if filename.endswith(&#34;.py&#34;) and filename.startswith(&#34;view_&#34;):
-      views.append(filename[5:-3])
+@MAIN.route(&#39;/&#39;)
+def index():
+  &#34;&#34;&#34;Returns page index.html&#34;&#34;&#34;
+  return render_template(&#39;index.html&#39;)
 
-  for view in views:
-    mod = importlib.import_module(f&#34;backend.views.view_{view}&#34;)
-    # if getattr(mod, &#34;disabled&#34;, None):
-    #   continue
-    print(f&#34;[*]Loading view {view} with route {mod.ROUTE}&#34;)
-    app.add_url_rule(mod.ROUTE, view, view_func=mod.view)
 
-  return app</code></pre>
+@MAIN.route(&#39;/profile&#39;)
+@login_required
+def profile():
+  &#34;&#34;&#34;Returns page profile.html with name and email of the user&#34;&#34;&#34;
+  return render_template(&#39;profile.html&#39;, name=current_user.name,
+                         mail=current_user.email)
+
+
+@MAIN.route(&#39;/parking&#39;)
+@login_required
+def parking():
+  &#34;&#34;&#34;
+  This function return parkings in jinja2 in the front
+  &#34;&#34;&#34;
+  parkings = result_database(connect_db(HOST, PASSWORD, SERVER))
+  now = datetime.now().strftime(&#34;%H:%M&#34;)
+  with open(&#34;front/parking.html&#34;) as file_:
+    template = Template(file_.read())
+    result = template.render(parkings=parkings, now=now)
+  return result</code></pre>
 </details>
 </section>
 <section>
@@ -60,34 +78,59 @@ def create_app(config_name):
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="backend.main.create_app"><code class="name flex">
-<span>def <span class="ident">create_app</span></span>(<span>config_name)</span>
+<dt id="backend.main.index"><code class="name flex">
+<span>def <span class="ident">index</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Create and configure an instance of the Flask application.</p></div>
+<div class="desc"><p>Returns page index.html</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def create_app(config_name):
-  &#34;&#34;&#34;Create and configure an instance of the Flask application.&#34;&#34;&#34;
-  app = Flask(__name__)
-
-  views = []
-  current_directory = os.path.dirname(os.path.realpath(__file__))
-
-  for filename in os.listdir(current_directory + &#34;/views&#34;):
-    if filename.endswith(&#34;.py&#34;) and filename.startswith(&#34;view_&#34;):
-      views.append(filename[5:-3])
-
-  for view in views:
-    mod = importlib.import_module(f&#34;backend.views.view_{view}&#34;)
-    # if getattr(mod, &#34;disabled&#34;, None):
-    #   continue
-    print(f&#34;[*]Loading view {view} with route {mod.ROUTE}&#34;)
-    app.add_url_rule(mod.ROUTE, view, view_func=mod.view)
-
-  return app</code></pre>
+<pre><code class="python">@MAIN.route(&#39;/&#39;)
+def index():
+  &#34;&#34;&#34;Returns page index.html&#34;&#34;&#34;
+  return render_template(&#39;index.html&#39;)</code></pre>
+</details>
+</dd>
+<dt id="backend.main.parking"><code class="name flex">
+<span>def <span class="ident">parking</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function return parkings in jinja2 in the front</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@MAIN.route(&#39;/parking&#39;)
+@login_required
+def parking():
+  &#34;&#34;&#34;
+  This function return parkings in jinja2 in the front
+  &#34;&#34;&#34;
+  parkings = result_database(connect_db(HOST, PASSWORD, SERVER))
+  now = datetime.now().strftime(&#34;%H:%M&#34;)
+  with open(&#34;front/parking.html&#34;) as file_:
+    template = Template(file_.read())
+    result = template.render(parkings=parkings, now=now)
+  return result</code></pre>
+</details>
+</dd>
+<dt id="backend.main.profile"><code class="name flex">
+<span>def <span class="ident">profile</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns page profile.html with name and email of the user</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@MAIN.route(&#39;/profile&#39;)
+@login_required
+def profile():
+  &#34;&#34;&#34;Returns page profile.html with name and email of the user&#34;&#34;&#34;
+  return render_template(&#39;profile.html&#39;, name=current_user.name,
+                         mail=current_user.email)</code></pre>
 </details>
 </dd>
 </dl>
@@ -108,7 +151,9 @@ def create_app(config_name):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="backend.main.create_app" href="#backend.main.create_app">create_app</a></code></li>
+<li><code><a title="backend.main.index" href="#backend.main.index">index</a></code></li>
+<li><code><a title="backend.main.parking" href="#backend.main.parking">parking</a></code></li>
+<li><code><a title="backend.main.profile" href="#backend.main.profile">profile</a></code></li>
 </ul>
 </li>
 </ul>

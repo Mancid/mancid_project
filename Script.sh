@@ -1,2 +1,2 @@
-export FLASK_APP="backend/main:create_app('dev')"
+export FLASK_APP="backend"
 flask run --host 0.0.0.0

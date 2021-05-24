@@ -26,22 +26,53 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from flask import Flask
-from backend.database.db_mongo import main
-APP = Flask(__name__)
+<pre><code class="python">import os
+from flask import Flask
+from flask_login import LoginManager
+from backend.models import DB
+from backend.models import User
+from .auth import AUTH as auth_blueprint
+from .main import MAIN as main_blueprint
 
 
-@APP.cli.command(&#34;initdb&#34;)
-def initdb_command():
-  &#34;&#34;&#34;Initializes the database.&#34;&#34;&#34;
-  print(&#34;Start of database initialization&#34;)
-  main()
-  print(&#34;The initialization of the database is completed&#34;)</code></pre>
+def create_app(config_name):
+  &#34;&#34;&#34;
+  This function is the flask run
+  &#34;&#34;&#34;
+  app = Flask(__name__)
+
+  DB.create_all()
+
+  app.config[&#39;SECRET_KEY&#39;] = os.environ[&#34;SECRET_KEY&#34;]
+
+  login_manager = LoginManager()
+  login_manager.login_view = &#39;auth.login&#39;
+  login_manager.init_app(app)
+
+  @login_manager.user_loader
+  def load_user(user_id):
+    # since the user_id is just the primary key of our user table,
+    # use it in the query for the user
+    return DB.query(User).get(int(user_id))
+
+  # blueprint for auth routes in our app
+  app.register_blueprint(auth_blueprint)
+
+  # blueprint for non-auth parts of app
+  app.register_blueprint(main_blueprint)
+
+  # app.run(debug=True)
+
+  return app</code></pre>
 </details>
 </section>
 <section>
 <h2 class="section-title" id="header-submodules">Sub-modules</h2>
 <dl>
+<dt><code class="name"><a title="backend.auth" href="auth.html">backend.auth</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt><code class="name"><a title="backend.database" href="database/index.html">backend.database</a></code></dt>
 <dd>
 <div class="desc"></div>
@@ -54,7 +85,7 @@ def initdb_command():
 <dd>
 <div class="desc"></div>
 </dd>
-<dt><code class="name"><a title="backend.views" href="views/index.html">backend.views</a></code></dt>
+<dt><code class="name"><a title="backend.models" href="models.html">backend.models</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -63,6 +94,49 @@ def initdb_command():
 <section>
 </section>
 <section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="backend.create_app"><code class="name flex">
+<span>def <span class="ident">create_app</span></span>(<span>config_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function is the flask run</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_app(config_name):
+  &#34;&#34;&#34;
+  This function is the flask run
+  &#34;&#34;&#34;
+  app = Flask(__name__)
+
+  DB.create_all()
+
+  app.config[&#39;SECRET_KEY&#39;] = os.environ[&#34;SECRET_KEY&#34;]
+
+  login_manager = LoginManager()
+  login_manager.login_view = &#39;auth.login&#39;
+  login_manager.init_app(app)
+
+  @login_manager.user_loader
+  def load_user(user_id):
+    # since the user_id is just the primary key of our user table,
+    # use it in the query for the user
+    return DB.query(User).get(int(user_id))
+
+  # blueprint for auth routes in our app
+  app.register_blueprint(auth_blueprint)
+
+  # blueprint for non-auth parts of app
+  app.register_blueprint(main_blueprint)
+
+  # app.run(debug=True)
+
+  return app</code></pre>
+</details>
+</dd>
+</dl>
 </section>
 <section>
 </section>
@@ -75,10 +149,16 @@ def initdb_command():
 <ul id="index">
 <li><h3><a href="#header-submodules">Sub-modules</a></h3>
 <ul>
+<li><code><a title="backend.auth" href="auth.html">backend.auth</a></code></li>
 <li><code><a title="backend.database" href="database/index.html">backend.database</a></code></li>
 <li><code><a title="backend.function" href="function/index.html">backend.function</a></code></li>
 <li><code><a title="backend.main" href="main.html">backend.main</a></code></li>
-<li><code><a title="backend.views" href="views/index.html">backend.views</a></code></li>
+<li><code><a title="backend.models" href="models.html">backend.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="backend.create_app" href="#backend.create_app">create_app</a></code></li>
 </ul>
 </li>
 </ul>
