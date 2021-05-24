@@ -7,7 +7,7 @@ from .auth import AUTH as auth_blueprint
 from .main import MAIN as main_blueprint
 
 
-def create_app():
+def create_app(config_name):
   """
   This function is the flask run
   """
