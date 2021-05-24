@@ -229,5 +229,3 @@ Project Link: [https://github.com/Mancid/data_parking_montpellier](https://githu
 [CI-url]:https://github.com/Mancid/data_parking_montpellier/actions -->
 [LS-shield]:https://img.shields.io/github/last-commit/Mancid/data_parking_montpellier?style=for-the-badge
 [LS-url]:https://github.com/Mancid/data_parking_montpellier/commits/main
-
-https://img.shields.io/github/workflow/status/mancid/data_parking_montpellier/passing
