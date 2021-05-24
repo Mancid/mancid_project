@@ -24,7 +24,7 @@
 [![LinkedIn][linkedin-shield1]][linkedin-url1]
 [![LinkedIn][linkedin-shield2]][linkedin-url2]
 [![LinkedIn][linkedin-shield3]][linkedin-url3]
-[![CI][CI-shield]][CI-url]
+<!--[![CI][CI-shield]][CI-url]-->
 [![LS][LS-shield]][LS-url]
 
 
@@ -225,8 +225,8 @@ Project Link: [https://github.com/Mancid/data_parking_montpellier](https://githu
 [linkedin-url2]: https://www.linkedin.com/in/nicolas-prodhomme-5578aa201/
 [linkedin-url3]: https://www.linkedin.com/in/sarah-truffert/
 [product-screenshot]: images/screenshot.png
-[CI-shield]:https://img.shields.io/travis/com/mancid/data_parking_montpellier?style=for-the-badge
-[CI-url]:https://github.com/Mancid/data_parking_montpellier/actions
+<!--[CI-shield]:https://img.shields.io/travis/com/mancid/data_parking_montpellier?style=for-the-badge
+[CI-url]:https://github.com/Mancid/data_parking_montpellier/actions-->
 [LS-shield]:https://img.shields.io/github/last-commit/Mancid/data_parking_montpellier?style=for-the-badge
 [LS-url]:https://github.com/Mancid/data_parking_montpellier/commits/main
 
