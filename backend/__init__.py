@@ -15,7 +15,6 @@ def create_app():
 
   DB.create_all()
 
-  # app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
   app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
 
   login_manager = LoginManager()
