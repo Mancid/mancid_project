@@ -40,7 +40,7 @@ def parking():
   return result
 
 
-SCHED = BackgroundScheduler(daemon=True)
-SCHED.add_job(main_db, 'interval', seconds=59)
-SCHED.start()
-main_db()
+# SCHED = BackgroundScheduler(daemon=True)
+# SCHED.add_job(main_db, 'interval', seconds=59)
+# SCHED.start()
+# main_db()
