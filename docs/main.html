@@ -38,7 +38,9 @@ from backend.database.db_mongo import HOST, PASSWORD, SERVER
 
 
 MAIN = Blueprint(&#39;main&#39;, __name__)
-
+SCHED = BackgroundScheduler(daemon=True)
+SCHED.start()
+SCHED.add_job(main_db, &#39;interval&#39;, seconds=59)
 
 
 @MAIN.route(&#39;/&#39;)
@@ -66,13 +68,7 @@ def parking():
   with open(&#34;front/parking.html&#34;) as file_:
     template = Template(file_.read())
     result = template.render(parkings=parkings, now=now)
-  return result
-
-
-# SCHED = BackgroundScheduler(daemon=True)
-# SCHED.add_job(main_db, &#39;interval&#39;, seconds=59)
-# SCHED.start()
-# main_db()</code></pre>
+  return result</code></pre>
 </details>
 </section>
 <section>
