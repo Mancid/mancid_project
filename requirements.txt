@@ -8,3 +8,4 @@ flask-login
 sqla-wrapper
 pymongo[tls, srv]
 jinja2
+apscheduler
