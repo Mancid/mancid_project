@@ -1,25 +1,46 @@
-#pylint: disable=E1101
-import os
-import importlib
-from flask import Flask
+# main.py
+
+from datetime import datetime
+from flask import Blueprint, render_template
+from flask_login import login_required, current_user
+from jinja2 import Template
+from apscheduler.schedulers.background import BackgroundScheduler
+from backend.database.db_mongo import result_database, connect_db, main_db
+from backend.database.db_mongo import HOST, PASSWORD, SERVER
 
 
-def create_app(config_name):
-  """Create and configure an instance of the Flask application."""
-  app = Flask(__name__)
+MAIN = Blueprint('main', __name__)
 
-  views = []
-  current_directory = os.path.dirname(os.path.realpath(__file__))
 
-  for filename in os.listdir(current_directory + "/views"):
-    if filename.endswith(".py") and filename.startswith("view_"):
-      views.append(filename[5:-3])
+@MAIN.route('/')
+def index():
+  """Returns page index.html"""
+  return render_template('index.html')
 
-  for view in views:
-    mod = importlib.import_module(f"backend.views.view_{view}")
-    # if getattr(mod, "disabled", None):
-    #   continue
-    print(f"[*]Loading view {view} with route {mod.ROUTE}")
-    app.add_url_rule(mod.ROUTE, view, view_func=mod.view)
 
-  return app
+@MAIN.route('/profile')
+@login_required
+def profile():
+  """Returns page profile.html with name and email of the user"""
+  return render_template('profile.html', name=current_user.name,
+                         mail=current_user.email)
+
+
+@MAIN.route('/parking')
+@login_required
+def parking():
+  """
+  This function return parkings in jinja2 in the front
+  """
+  parkings = result_database(connect_db(HOST, PASSWORD, SERVER))
+  now = datetime.now().strftime("%H:%M")
+  with open("front/parking.html") as file_:
+    template = Template(file_.read())
+    result = template.render(parkings=parkings, now=now)
+  return result
+
+
+# SCHED = BackgroundScheduler(daemon=True)
+# SCHED.add_job(main_db, 'interval', seconds=59)
+# SCHED.start()
+# main_db()

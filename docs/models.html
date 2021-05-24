@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.2" />
-<title>backend.views.view_index API documentation</title>
+<title>backend.models API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,21 +19,30 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>backend.views.view_index</code></h1>
+<h1 class="title">Module <code>backend.models</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from flask import render_template
+<pre><code class="python">import os
+from sqla_wrapper import SQLAlchemy
+from flask_login import UserMixin
 
-ROUTE = &#34;/&#34;
+DB = SQLAlchemy(os.getenv(&#34;DATABASE_URL&#34;, &#34;sqlite:////db.sqlite&#34;))
+# this connects to a database either on Heroku or on localhost
 
 
-def view():
-  &#34;&#34;&#34;Returns page index.html&#34;&#34;&#34;
-  return render_template(&#34;index.html&#34;)</code></pre>
+class User(UserMixin, DB.Model):
+  &#34;&#34;&#34;
+  This class create a model for a user with Column id, email, password and name
+  &#34;&#34;&#34;
+  # primary keys are required by SQLAlchemy
+  id = DB.Column(DB.Integer, primary_key=True)
+  email = DB.Column(DB.String(100), unique=True)
+  password = DB.Column(DB.String(100))
+  name = DB.Column(DB.String(1000))</code></pre>
 </details>
 </section>
 <section>
@@ -41,25 +50,148 @@ def view():
 <section>
 </section>
 <section>
-<h2 class="section-title" id="header-functions">Functions</h2>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="backend.views.view_index.view"><code class="name flex">
-<span>def <span class="ident">view</span></span>(<span>)</span>
+<dt id="backend.models.User"><code class="flex name class">
+<span>class <span class="ident">User</span></span>
+<span>(</span><span>**kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Returns page index.html</p></div>
+<div class="desc"><p>This class create a model for a user with Column id, email, password and name</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code>kwargs</code>.</p>
+<p>Only keys that are present as
+attributes of the instance's class are allowed. These could be,
+for example, any mapped columns or relationships.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def view():
-  &#34;&#34;&#34;Returns page index.html&#34;&#34;&#34;
-  return render_template(&#34;index.html&#34;)</code></pre>
+<pre><code class="python">class User(UserMixin, DB.Model):
+  &#34;&#34;&#34;
+  This class create a model for a user with Column id, email, password and name
+  &#34;&#34;&#34;
+  # primary keys are required by SQLAlchemy
+  id = DB.Column(DB.Integer, primary_key=True)
+  email = DB.Column(DB.String(100), unique=True)
+  password = DB.Column(DB.String(100))
+  name = DB.Column(DB.String(1000))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>flask_login.mixins.UserMixin</li>
+<li>sqlalchemy.orm.decl_api.Model</li>
+<li>sqla_wrapper.default_model.get_default_model_class.<locals>.Model</li>
+<li>sqla_wrapper.representable.Representable</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="backend.models.User.email"><code class="name">var <span class="ident">email</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, instance, owner):
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self._supports_population and self.key in dict_:
+        return dict_[self.key]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            util.raise_(
+                orm_exc.UnmappedInstanceError(instance),
+                replace_context=err,
+            )
+        return self.impl.get(state, dict_)</code></pre>
+</details>
+</dd>
+<dt id="backend.models.User.id"><code class="name">var <span class="ident">id</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, instance, owner):
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self._supports_population and self.key in dict_:
+        return dict_[self.key]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            util.raise_(
+                orm_exc.UnmappedInstanceError(instance),
+                replace_context=err,
+            )
+        return self.impl.get(state, dict_)</code></pre>
+</details>
+</dd>
+<dt id="backend.models.User.name"><code class="name">var <span class="ident">name</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, instance, owner):
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self._supports_population and self.key in dict_:
+        return dict_[self.key]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            util.raise_(
+                orm_exc.UnmappedInstanceError(instance),
+                replace_context=err,
+            )
+        return self.impl.get(state, dict_)</code></pre>
+</details>
+</dd>
+<dt id="backend.models.User.password"><code class="name">var <span class="ident">password</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, instance, owner):
+    if instance is None:
+        return self
+
+    dict_ = instance_dict(instance)
+    if self._supports_population and self.key in dict_:
+        return dict_[self.key]
+    else:
+        try:
+            state = instance_state(instance)
+        except AttributeError as err:
+            util.raise_(
+                orm_exc.UnmappedInstanceError(instance),
+                replace_context=err,
+            )
+        return self.impl.get(state, dict_)</code></pre>
 </details>
 </dd>
 </dl>
-</section>
-<section>
+</dd>
+</dl>
 </section>
 </article>
 <nav id="sidebar">
@@ -70,12 +202,20 @@ def view():
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="backend.views" href="index.html">backend.views</a></code></li>
+<li><code><a title="backend" href="index.html">backend</a></code></li>
 </ul>
 </li>
-<li><h3><a href="#header-functions">Functions</a></h3>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="backend.models.User" href="#backend.models.User">User</a></code></h4>
 <ul class="">
-<li><code><a title="backend.views.view_index.view" href="#backend.views.view_index.view">view</a></code></li>
+<li><code><a title="backend.models.User.email" href="#backend.models.User.email">email</a></code></li>
+<li><code><a title="backend.models.User.id" href="#backend.models.User.id">id</a></code></li>
+<li><code><a title="backend.models.User.name" href="#backend.models.User.name">name</a></code></li>
+<li><code><a title="backend.models.User.password" href="#backend.models.User.password">password</a></code></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

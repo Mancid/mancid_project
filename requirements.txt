@@ -1,7 +1,10 @@
-
 flake8
 pytest
+apscheduler
 flask
 flask-cors
+flask-sqlalchemy
+flask-login
+sqla-wrapper
 pymongo[tls, srv]
 jinja2
