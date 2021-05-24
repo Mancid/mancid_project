@@ -39,6 +39,10 @@ jobs:
         mv tmp/backend/* docs/
         rm -rf tmp/
 
+    - name: Test with pytest
+      run: |
+        pytest tests
+
     - name: Commit files
       run: |
         echo ${{ github.ref }}
