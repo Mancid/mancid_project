@@ -12,6 +12,7 @@ from backend.database.db_mongo import HOST, PASSWORD, SERVER
 MAIN = Blueprint('main', __name__)
 
 
+
 @MAIN.route('/')
 def index():
   """Returns page index.html"""
