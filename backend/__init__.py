@@ -11,7 +11,9 @@ def create_app(config_name):
   """
   This function is the flask run
   """
-  app = Flask(__name__, template_folder='../frontend/templates/',static_folder='../frontend/static')
+  app = Flask(__name__,
+              template_folder='../frontend/templates/',
+              static_folder='../frontend/static')
 
   DB.create_all()
 
