@@ -37,7 +37,7 @@ def parking():
   """
   parkings = result_database(connect_db(HOST, PASSWORD, SERVER))
   now = datetime.now().strftime("%H:%M")
-  with open("./backend/templates/parking.html") as file_:
+  with open("./frontend/templates/parking.html") as file_:
     template = Template(file_.read())
     result = template.render(parkings=parkings, now=now)
   return result
