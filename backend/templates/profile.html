@@ -1,4 +1,4 @@
-<!-- templates/index.html -->
+<!-- templates/profile.html -->
 
 {% extends "base.html" %}
 
@@ -13,15 +13,7 @@
   {% endwith %}
 </div>
 <h1 class="title">
-  Welcome to Data_parking_Montpellier Project
+  Welcome, {{ name }}!
 </h1>
-<h2 class="subtitle">
-  by Mancid.
-</h2>
-<div>
-  <a href="/parking">Parking</a>
-</div>
-<div>
-  <a href="/login">Login</a>
-</div>
+<h2>{{ mail }}</h2>
 {% endblock %}
