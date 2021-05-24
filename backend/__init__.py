@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_login import LoginManager
 from backend.models import DB
@@ -14,7 +15,8 @@ def create_app():
 
   DB.create_all()
 
-  app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
+  # app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
+  app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
 
   login_manager = LoginManager()
   login_manager.login_view = 'auth.login'
