@@ -12,6 +12,7 @@ from backend.database.db_mongo import HOST, PASSWORD, SERVER
 MAIN = Blueprint('main', __name__)
 
 
+
 @MAIN.route('/')
 def index():
   """Returns page index.html"""
@@ -40,7 +41,7 @@ def parking():
   return result
 
 
-# SCHED = BackgroundScheduler(daemon=True)
-# SCHED.add_job(main_db, 'interval', seconds=59)
-# SCHED.start()
-# main_db()
+SCHED = BackgroundScheduler(daemon=True)
+SCHED.add_job(main_db, 'interval', seconds=59)
+SCHED.start()
+main_db()
