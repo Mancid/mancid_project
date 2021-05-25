@@ -39,7 +39,9 @@ def create_app(config_name):
   &#34;&#34;&#34;
   This function is the flask run
   &#34;&#34;&#34;
-  app = Flask(__name__)
+  app = Flask(__name__,
+              template_folder=&#39;../frontend/templates/&#39;,
+              static_folder=&#39;../frontend/static&#39;)
 
   DB.create_all()
 
@@ -109,7 +111,9 @@ def create_app(config_name):
   &#34;&#34;&#34;
   This function is the flask run
   &#34;&#34;&#34;
-  app = Flask(__name__)
+  app = Flask(__name__,
+              template_folder=&#39;../frontend/templates/&#39;,
+              static_folder=&#39;../frontend/static&#39;)
 
   DB.create_all()
 

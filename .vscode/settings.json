@@ -1,9 +1,9 @@
 {
     "python.terminal.activateEnvironment": true,
-    "python.linting.enabled": true,
+    "python.linting.enabled": false,
     "python.formatting.provider": "autopep8",
     "python.linting.flake8Enabled": true,
-    "python.pythonPath": "C:\\Program Files\\Python36\\python.exe",
+    "python.pythonPath": "C:\\Python36\\python.exe",
     "python.envFile": "${workspaceFolder}/.venv",
     
 }
