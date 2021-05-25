@@ -3,7 +3,7 @@ from sqla_wrapper import SQLAlchemy
 from flask_login import UserMixin
 # database_url = os.environ.get('DATABASE_URL').replace("://", "ql:////", 1)
 # DB = SQLAlchemy(f'{database_url}')
-DB = SQLAlchemy(os.environ.get('DATABASE_URL').replace("://", "ql:////", 1))
+DB = SQLAlchemy(os.environ.get('DATABASE_URL').replace("://", "ql+psycopg2://", 1))
 # this connects to a database either on Heroku or on localhost
 
 
