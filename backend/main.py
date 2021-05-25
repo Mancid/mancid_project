@@ -10,9 +10,9 @@ from backend.database.db_mongo import HOST, PASSWORD, SERVER
 
 
 MAIN = Blueprint('main', __name__)
-SCHED = BackgroundScheduler(daemon=True)
-SCHED.start()
-SCHED.add_job(main_db, 'interval', seconds=59)
+# SCHED = BackgroundScheduler(daemon=True)
+# SCHED.start()
+# SCHED.add_job(main_db, 'interval', seconds=59)
 
 
 @MAIN.route('/')
