@@ -26,29 +26,35 @@ jobs:
         pip install pdoc3
         pip install -r requirements.txt;
         
-    - name: auto pdoc
-      env: 
-        HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
-        PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
-        SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
-      run: |
-        pdoc3 --html -o tmp backend/
-        rm -rf docs
-        mkdir -p docs/
-        mv tmp/backend/* docs/
-        rm -rf tmp/
 
-    - name: Test with pytest
-      env: 
-        HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
-        PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
-        SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
-        SECRET_KEY: ${{ secrets.SECRET_KEY}}
-        DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
+    # - name: auto pdoc
+    #   env: 
+    #     HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
+    #     PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
+    #     SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
+    #     SECRET_KEY: ${{ secrets.SECRET_KEY }}
+    #     DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
+
+    # - name: Test with pytest
+    #   env: 
+    #     HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
+    #     PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
+    #     SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
+    #     SECRET_KEY: ${{ secrets.SECRET_KEY}}
+    #     DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
+    #   run: |
+    #     pytest tests
+    - run: |
+        git fetch --prune --unshallow
+
+    - name: Deploy to heroku
+      env:
+        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_KEY }}
+        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      if: github.ref == 'refs/heads/main' && job.status == 'success'
       run: |
-        pytest tests
+        git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+        git push heroku main -f
 
     - name: Commit files
       run: |
@@ -62,15 +68,3 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Deploy to heroku
-      jobs:
-        build:
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/checkout@v2
-            - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-              with:
-                heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-                heroku_app_name: mancidparking #Must be unique in Heroku
-                heroku_email: ${{secrets.HEROKU_EMAIL}}
