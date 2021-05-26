@@ -65,7 +65,7 @@ def parking():
   &#34;&#34;&#34;
   parkings = result_database(connect_db(HOST, PASSWORD, SERVER))
   now = datetime.now().strftime(&#34;%H:%M&#34;)
-  with open(&#34;front/parking.html&#34;) as file_:
+  with open(&#34;./frontend/templates/parking.html&#34;) as file_:
     template = Template(file_.read())
     result = template.render(parkings=parkings, now=now)
   return result</code></pre>
@@ -110,7 +110,7 @@ def parking():
   &#34;&#34;&#34;
   parkings = result_database(connect_db(HOST, PASSWORD, SERVER))
   now = datetime.now().strftime(&#34;%H:%M&#34;)
-  with open(&#34;front/parking.html&#34;) as file_:
+  with open(&#34;./frontend/templates/parking.html&#34;) as file_:
     template = Template(file_.read())
     result = template.render(parkings=parkings, now=now)
   return result</code></pre>

@@ -33,7 +33,6 @@ jobs:
         SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
-
       run: |
         pdoc3 --html -o tmp backend/
         rm -rf docs
