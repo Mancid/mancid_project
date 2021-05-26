@@ -5,7 +5,9 @@ name: Python application
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - nico
   pull_request:
     branches: [ main ]
 
@@ -48,9 +50,6 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.6
-
-    - name: Generate Python Docs
-      uses: jbheard/markdown-docs@v1
 
     - name: Install dependencies
       run: |
