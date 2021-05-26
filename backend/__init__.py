@@ -36,5 +36,4 @@ def create_app(config_name):
   app.register_blueprint(main_blueprint)
 
   # app.run(debug=True)
-
   return app

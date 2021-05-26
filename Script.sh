@@ -1,2 +1,2 @@
 export FLASK_APP="backend"
-flask run --host 0.0.0.0
+gunicorn --bind 0.0.0.0:${PORT} wsgi:app
