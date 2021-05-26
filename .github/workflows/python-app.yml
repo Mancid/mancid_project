@@ -32,7 +32,7 @@ jobs:
         PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
         SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DATABASE_URL: ${{ secrets.DATABASE_SQL }}
       run: |
         pdoc3 --html -o tmp backend/
         rm -rf docs
@@ -46,7 +46,7 @@ jobs:
         PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
         SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
         SECRET_KEY: ${{ secrets.SECRET_KEY}}
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DATABASE_URL: ${{ secrets.DATABASE_SQL }}
       run: |
         pytest tests
 
