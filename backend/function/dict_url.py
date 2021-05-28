@@ -3,11 +3,12 @@ import logging
 
 
 def dict_url():
-  """
-  This function return a dict with
-  keys = the name of the park , and the values
-  is the url. We need to recover url for download
-  the xml
+  """Add all url from file url.ini with
+  key = name of the parking end value is
+  the url.
+
+  :returns: dictionnary with all parking and url
+  :rtype: dict
   """
   url = configparser.ConfigParser()
   logging.debug("initializing the variable url")

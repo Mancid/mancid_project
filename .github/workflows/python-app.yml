@@ -13,27 +13,18 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python 3.6
       uses: actions/setup-python@v2
       with:
         python-version: 3.6
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pdoc3
         pip install -r requirements.txt;
-        
-
-    # - name: auto pdoc
-    #   env: 
-    #     HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
-    #     PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
-    #     SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
-    #     SECRET_KEY: ${{ secrets.SECRET_KEY }}
-    #     DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
 
     # - name: Test with pytest
     #   env: 
@@ -44,6 +35,8 @@ jobs:
     #     DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
     #   run: |
     #     pytest tests
+
+
     - run: |
         git fetch --prune --unshallow
 
