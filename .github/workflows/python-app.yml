@@ -30,13 +30,14 @@ jobs:
         HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
         PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
         SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
-        SECRET_KEY: ${{ secrets.SECRET_KEY}}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
       run: |
         cd docs/
         make html
+        echo ${#DATABASE_SQL}
     
-        
+
     - name: Commit files
       run: |
         echo ${{ github.ref }}
