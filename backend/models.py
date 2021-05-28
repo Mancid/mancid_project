@@ -2,7 +2,7 @@ import os
 from sqla_wrapper import SQLAlchemy
 from flask_login import UserMixin
 
-url = os.environ["HOST_MONGO_DB"]
+url = "exemple.com"
 raise Exception(len(url))
 DB = SQLAlchemy(url)
 # this connects to a database either on Heroku or on localhost
