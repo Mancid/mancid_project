@@ -11,11 +11,9 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
     - name: Set up Python 3.6
       uses: actions/setup-python@v2
       with:
@@ -25,6 +23,47 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt;
+        pip install setuptools;
+
+    - name: "Build Sphinx doc"
+      env: 
+        HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
+        PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
+        SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
+      run: |
+        cd docs/
+        make html
+    
+
+    - name: Commit files
+      run: |
+        echo ${{ github.ref }}
+        git add .
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "CI: Automated build push" -a | exit 0
+
+
+    - name: Push changes
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: docs/build/html/
+
+
+    # - name: "Deploy Github Pages"
+    #   if: success()
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+    #     user_name: "github-actions[bot]"
+    #     publish_branch: gh-pages
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: docs/build/html/
 
     # - name: Test with pytest
     #   env: 
@@ -36,9 +75,8 @@ jobs:
     #   run: |
     #     pytest tests
 
-
-    - run: |
-        git fetch --prune --unshallow
+    # - run: |
+    #     git fetch --prune --unshallow
 
     - name: Deploy to heroku
       env:
@@ -48,16 +86,3 @@ jobs:
       run: |
         git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
         git push heroku main -f
-
-    - name: Commit files
-      run: |
-        echo ${{ github.ref }}
-        git add .
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git commit -m "CI: Automated build push" -a | exit 0
-    - name: Push changes
-      if: github.ref == 'refs/heads/main'
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
