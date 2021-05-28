@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Set up Python 3.6
       uses: actions/setup-python@v2
       with:
@@ -45,10 +45,10 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git commit -m "CI: Automated build push" -a | exit 0
 
-        
+
     - name: Push changes
       if: github.ref == 'refs/heads/main'
-      uses: ad-m/github-push-action@master
+      uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
