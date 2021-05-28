@@ -13,11 +13,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    run: 
+        apt install libpq-dev python3-dev
     steps:
     - uses: actions/checkout@v1
     - uses: ammaraskar/sphinx-action@master
-      run: 
-        apt install libpq-dev python3-dev
       with:
         docs-folder: "docs/"
     - name: Set up Python 3.6

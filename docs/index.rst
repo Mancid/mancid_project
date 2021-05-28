@@ -12,7 +12,7 @@ Welcome to Mancid parking's documentation!
 
 
    modules
-   ../README.md
+   README.md
 
 
 
