@@ -55,6 +55,7 @@ jobs:
       if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
+        run: git config -l | grep 'http..*.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
         publish_branch: gh-pages
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: docs/build/html/
