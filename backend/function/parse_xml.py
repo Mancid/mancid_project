@@ -9,6 +9,11 @@ def xml_parse_url(url):
   the url, with the library xml.etree. ElementTree
   we recover the data on the xlm url adding the
   result in list
+
+  :return: dict with values total, free , status of 
+  all parkings.
+  :rtype: dict
+
   """
   open_url = urllib.request.urlopen(url).read()
   logging.debug("initializing the variable %s for read the url", open_url)
