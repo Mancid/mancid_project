@@ -3,7 +3,7 @@ from sqla_wrapper import SQLAlchemy
 from flask_login import UserMixin
 
 url = os.environ["DATABASE_SQL"]
-DB = SQLAlchemy(url)
+DB = SQLAlchemy(f"postgresql://{url}")
 # this connects to a database either on Heroku or on localhost
 
 
