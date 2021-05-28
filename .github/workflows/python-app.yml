@@ -37,9 +37,6 @@ jobs:
         BRANCH: gh-pages 
         FOLDER: build/html/
 
-
-
-S
     # - name: Test with pytest
     #   env: 
     #     HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
