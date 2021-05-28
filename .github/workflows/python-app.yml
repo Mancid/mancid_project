@@ -27,7 +27,7 @@ jobs:
 
     - name: "Build Sphinx doc"
       run: |
-        cd /docs
+        cd docs/
         make html
     
 
