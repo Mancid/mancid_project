@@ -47,11 +47,12 @@ jobs:
 
 
     - name: "Deploy Github Pages"
-      uses: JamesIves/github-pages-deploy-action@4.0.0
+      if: success()
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages 
-        FOLDER: docs/build/html/
+        publish_branch: gh-pages
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/build/html/
 
     # - name: Test with pytest
     #   env: 
