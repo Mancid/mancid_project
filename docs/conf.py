@@ -34,7 +34,8 @@ release = '1'
 extensions = [
     'sphinx.ext.napoleon',
     "sphinx_rtd_theme",
-    "recommonmark"
+    "recommonmark",
+    "sphinx.ext.githubpages"
 ]
 
 napoleon_google_docstring = False

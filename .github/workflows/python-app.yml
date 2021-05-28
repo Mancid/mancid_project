@@ -23,12 +23,22 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt;
-        sudo apt install libpq-dev python3-dev
+        pip install setuptools;
+
+    - name: "Build Sphinx doc"
+      run: |
+        make html
+    
+
+    - name: "Deploy Github Pages"
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages 
+          FOLDER: build/html/
 
 
-    - uses: ammaraskar/sphinx-action@master
-      with:
-        docs-folder: "docs/"
+
 
     # - name: Test with pytest
     #   env: 
@@ -53,15 +63,15 @@ jobs:
         git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
         git push heroku main -f
 
-    - name: Commit files
-      run: |
-        echo ${{ github.ref }}
-        git add .
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git commit -m "CI: Automated build push" -a | exit 0
-    - name: Push changes
-      if: github.ref == 'refs/heads/main'
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Commit files
+    #   run: |
+    #     echo ${{ github.ref }}
+    #     git add .
+    #     git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    #     git config --local user.name "github-actions[bot]"
+    #     git commit -m "CI: Automated build push" -a | exit 0
+    # - name: Push changes
+    #   if: github.ref == 'refs/heads/main'
+    #   uses: ad-m/github-push-action@master
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
