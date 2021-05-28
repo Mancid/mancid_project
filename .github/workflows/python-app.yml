@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python 3.6
       uses: actions/setup-python@v2
       with:
@@ -33,7 +34,8 @@ jobs:
         SECRET_KEY: ${{ secrets.SECRET_KEY}}
         DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
       run: |
-        pytest tests
+        git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+        git push heroku main -f
 
 
     - run: |
