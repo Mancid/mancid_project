@@ -1,8 +1,8 @@
 import os
 from sqla_wrapper import SQLAlchemy
 from flask_login import UserMixin
-
-DB = SQLAlchemy(os.getenv("DATABASE_URL", "sqlite:///db.sqlite"))
+url = str(os.environ["DATABASE_SQL"])
+DB = SQLAlchemy(url)
 # this connects to a database either on Heroku or on localhost
 
 
