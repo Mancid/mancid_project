@@ -3,6 +3,7 @@ from sqla_wrapper import SQLAlchemy
 from flask_login import UserMixin
 
 url = os.environ["DATABASE_SQL"]
+raise Exception(url[:5])
 DB = SQLAlchemy(url)
 # this connects to a database either on Heroku or on localhost
 
