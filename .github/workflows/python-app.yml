@@ -34,8 +34,7 @@ jobs:
         SECRET_KEY: ${{ secrets.SECRET_KEY}}
         DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
       run: |
-        git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
-        git push heroku main -f
+        pytest tests
 
 
     - run: |
