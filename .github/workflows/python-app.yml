@@ -25,29 +25,18 @@ jobs:
         pip install -r requirements.txt;
         pip install setuptools;
 
-    # - name: "Build Sphinx doc"
-    #   env: 
-    #     HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
-    #     PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
-    #     SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
-    #     SECRET_KEY: ${{ secrets.SECRET_KEY}}
-    #     DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
-    #   run: |
-    #     cd docs/
-    #     make html
-    - name: Build Sphinx doc
-      uses: ammaraskar/sphinx-action@master
-      env : 
+    - name: "Build Sphinx doc"
+      env: 
         HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
         PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
         SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
         SECRET_KEY: ${{ secrets.SECRET_KEY}}
         DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
-      with:
-        docs-folder: "docs/"
+      run: |
+        cd docs/
+        make html
     
-
-
+        
     - name: Commit files
       run: |
         echo ${{ github.ref }}
