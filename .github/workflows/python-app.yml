@@ -26,15 +26,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt;
 
-    - name: Test with pytest
-      env: 
-        HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
-        PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
-        SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
-        SECRET_KEY: ${{ secrets.SECRET_KEY}}
-        DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
-      run: |
-        pytest tests
+    # - name: Test with pytest
+    #   env: 
+    #     HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
+    #     PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
+    #     SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
+    #     SECRET_KEY: ${{ secrets.SECRET_KEY}}
+    #     DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
+    #   run: |
+    #     pytest tests
 
 
     - run: |
