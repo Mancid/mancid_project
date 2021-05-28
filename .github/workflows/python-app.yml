@@ -46,7 +46,7 @@ jobs:
         git commit -m "CI: Automated build push" -a | exit 0
 
 
-    - name: Push changes
+    - name: Deploy Github pages
       if: github.ref == 'refs/heads/main'
       uses: peaceiris/actions-gh-pages@v3
       with:
@@ -75,8 +75,8 @@ jobs:
     #   run: |
     #     pytest tests
 
-    # - run: |
-    #     git fetch --prune --unshallow
+    - run: |
+        git fetch --prune --unshallow
 
     - name: Deploy to heroku
       env:
