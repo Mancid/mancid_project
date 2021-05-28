@@ -26,11 +26,16 @@ jobs:
         pip install setuptools;
 
     - name: "Build Sphinx doc"
+      env: 
+        HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
+        PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
+        SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
       run: |
         cd docs/
         make html
     
-
 
     - name: Commit files
       run: |
@@ -47,14 +52,12 @@ jobs:
 
 
     - name: "Deploy Github Pages"
-      uses: JamesIves/github-pages-deploy-action@4.0.0
+      if: success()
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+        publish_branch: gh-pages
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages 
-        FOLDER: docs/build/html/
+        publish_dir: docs/build/html/
 
     # - name: Test with pytest
     #   env: 
