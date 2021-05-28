@@ -54,55 +54,38 @@ jobs:
         publish_branch: gh-pages
         publish_dir: docs/build/html/
 
+    - name: Test with pytest
+      env: 
+        HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
+        PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
+        SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY}}
+        DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
+      run: |
+        pytest tests
 
-    # - name: "Deploy Github Pages"
-    #   if: success()
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     user_email: "41898282+github-actions[bot]@users.noreply.github.com"
-    #     user_name: "github-actions[bot]"
-    #     publish_branch: gh-pages
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: docs/build/html/
+    - run: |
+        git fetch --prune --unshallow
 
-    # - name: Test with pytest
-    #   env: 
-    #     HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
-    #     PASSWORD_MONGO_DB: ${{ secrets.PASSWORD_MONGO_DB }}
-    #     SERVER_MONGO_DB: ${{ secrets.SERVER_MONGO_DB }}
-    #     SECRET_KEY: ${{ secrets.SECRET_KEY}}
-    #     DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
-    #   run: |
-    #     pytest tests
+    - name: Heroku login credentials
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      run: |
+        cat > ~/.netrc <<EOF
+          machine api.heroku.com
+            login $HEROKU_EMAIL
+            password $HEROKU_API_KEY
+          machine git.heroku.com
+            login $HEROKU_EMAIL
+            password $HEROKU_API_KEY
+        EOF
 
-    # - run: |
-    #     git fetch --prune --unshallow
-
-    # - name: Heroku login credentials
-    #   env:
-    #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-    #     HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-    #   run: |
-    #     cat > ~/.netrc <<EOF
-    #       machine api.heroku.com
-    #         login $HEROKU_EMAIL
-    #         password $HEROKU_API_KEY
-    #       machine git.heroku.com
-    #         login $HEROKU_EMAIL
-    #         password $HEROKU_API_KEY
-    #     EOF
-
-    # - name: Deploy to heroku
-    #   env:
-    #     HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_KEY }}
-    #     HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-    #   if: github.ref == 'refs/heads/main' && job.status == 'success'
-    #   run: |
-    #     git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
-    #     git push heroku main -f
-    - uses: akhileshns/heroku-deploy@v3.0.0
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: ${{ secrets.HEROKU_APP_NAME}}
-        heroku_email: ${{ secrets.HEROKU_EMAIL}}
-        usedocker: true
+    - name: Deploy to heroku
+      env:
+        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_KEY }}
+        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      if: github.ref == 'refs/heads/main' && job.status == 'success'
+      run: |
+        git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+        git push heroku main -f
