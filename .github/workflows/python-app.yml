@@ -27,8 +27,8 @@ jobs:
 
 
     - uses: ammaraskar/sphinx-action@master
-    with:
-      docs-folder: "docs/"
+      with:
+        docs-folder: "docs/"
 
     # - name: Test with pytest
     #   env: 
