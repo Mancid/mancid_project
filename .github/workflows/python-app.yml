@@ -26,6 +26,22 @@ jobs:
         pip install setuptools;
         curl https://cli-assets.heroku.com/install-ubuntu.sh | sh;
 
+
+    - run: |
+        git fetch --prune --unshallow
+
+
+    - name: Deploy to heroku
+      env:
+        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+        HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      if: github.ref == 'refs/heads/main' && job.status == 'success'
+      run: |
+        git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git 
+        git push heroku main -f
+
+
     - name: "Build Sphinx doc"
       env: 
         HOST_MONGO_DB: ${{ secrets.HOST_MONGO_DB }}
@@ -64,32 +80,3 @@ jobs:
         DATABASE_SQL: ${{ secrets.DATABASE_SQL }}
       run: |
         pytest tests
-
-    - run: |
-        git fetch --prune --unshallow
-
-    - name: Heroku login credentials
-      run: |
-          cat > ~/.netrc <<EOF
-            machine api.heroku.com
-              login $HEROKU_EMAIL
-              password $HEROKU_API_TOKEN
-            machine git.heroku.com
-              login $HEROKU_EMAIL
-              password $HEROKU_API_TOKEN
-          EOF
-      env:
-        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
-        HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-
-
-    - name: Deploy to heroku
-      env:
-        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
-        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-        HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-      if: github.ref == 'refs/heads/main' && job.status == 'success'
-      run: |
-        heroku login
-        git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git 
-        git push heroku main -f
