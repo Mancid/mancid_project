@@ -67,6 +67,21 @@ jobs:
     - run: |
         git fetch --prune --unshallow
 
+    - name: Heroku login credentials
+      run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_TOKEN
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_TOKEN
+          EOF
+      env:
+        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+        HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+
+
     - name: Deploy to heroku
       env:
         HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
