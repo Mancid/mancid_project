@@ -89,4 +89,5 @@ jobs:
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       if: github.ref == 'refs/heads/main' && job.status == 'success'
       run: |
-        git push https://heroku:$HEROKU_API_TOKEN@git.heroku.com/mancidparking.git HEAD:main
+        heroku git:remote --app ${{ secrets.HEROKU_APP_NAME}}
+        git push heroku HEAD:main
