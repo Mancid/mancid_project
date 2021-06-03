@@ -63,8 +63,8 @@ jobs:
       run: |
         pytest tests
 
-    - run: |
-        git fetch --prune --unshallow
+    # - run: |
+    #     git fetch --prune --unshallow
 
     - name: Deploy to heroku
       env:
