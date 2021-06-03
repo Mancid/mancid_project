@@ -72,5 +72,5 @@ jobs:
         HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       if: github.ref == 'refs/heads/main' && job.status == 'success'
       run: |
-        git remote add heroku https://heroku:$HEROKU_API_TOKEN@https://git.heroku.com/mancidparking.git
+        git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/mancidparking.git
         git push heroku main -f
