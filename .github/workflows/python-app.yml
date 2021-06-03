@@ -36,7 +36,6 @@ jobs:
         cd docs/
         make html
     
-
     - name: Commit files
       run: |
         echo ${{ github.ref }}
