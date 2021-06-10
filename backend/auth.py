@@ -11,16 +11,22 @@ AUTH = Blueprint('auth', __name__)
 
 @AUTH.route('/login')
 def login():
-  """Returns page login.html"""
+  """Returns page login.html
+
+  :returns: page login.html
+  :rtype: html
+  """
   return render_template('login.html')
 
 
 @AUTH.route('/login', methods=['POST'])
 def login_post():
-  """
-  This function return page login.html
+  """This function return page login.html
   If not user : try again
   If user : return page parking.html
+
+  :returns: if user return parking, if not user try again
+  :rtype: bool
   """
   email = request.form.get('email')
   password = request.form.get('password')
@@ -44,15 +50,21 @@ def login_post():
 
 @AUTH.route('/signup')
 def signup():
-  """Returns page signup.html"""
+  """Returns page signup.html
+  
+  :returns: signup.html
+  :rtype: html
+  """
   return render_template('signup.html')
 
 
 @AUTH.route('/signup', methods=['POST'])
 def signup_post():
-  """
-  This function create a user with email, name and password.
+  """This function create a user with email, name and password.
   The user is recorde in the database.
+
+  :returns: create user with email, name and password
+  :rtype: post method
   """
   email = request.form.get('email')
   name = request.form.get('name')
@@ -84,8 +96,10 @@ def signup_post():
 @AUTH.route('/logout')
 @login_required
 def logout():
-  """
-  This function logout the user.
+  """This function logout the user.
+
+  :returns: logout the user
+  :rtype: logout user
   """
   logout_user()
   flash('You have been logged out.')

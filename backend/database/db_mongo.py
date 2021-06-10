@@ -12,6 +12,9 @@ SERVER = os.environ["SERVER_MONGO_DB"]
 
 def connect_db(host, password, server):
   """ This function connect in atlas a mongodb
+
+  :returns: connection to atlas mongo db
+  :rtype: connection string
   """
   client = MongoClient(f"mongodb+srv://{host}:{password}@{server}?ssl=true&"\
                        "ssl_cert_reqs=CERT_NONE")
@@ -25,7 +28,9 @@ def connect_db(host, password, server):
 def insert_rows(database):
   """This function insert rows in the database
   mongodatabase
-  database : is the database want to be inserted
+  
+  :returns: inserts rows in the database
+  :rtype: rows in database
   """
   values = create_dict(dict_url("url.ini"))
   logging.info("%s this is the values add in database", values)
@@ -34,6 +39,9 @@ def insert_rows(database):
 
 def remove(database):
   """ This function remove all rows in database mongodatabase
+
+  :returns: Remove all rows in database
+  :rtype: remove
   """
   logging.info("remove all rows in database mongodatabase")
   return database.remove({})
@@ -42,6 +50,9 @@ def remove(database):
 def result_database(database):
   """ This function return the result with all
   name in parking. They return a dict
+
+  :returns: a dict with all rows in database
+  :rtype: dict
   """
   res = {}
   for i in dict_url("url.ini"):
@@ -54,9 +65,11 @@ def result_database(database):
 
 
 def main_db():
-  """
-  This is the main function to call
+  """This is the main function to call
   all other functions
+
+  :returns: connection, remove, insert and result
+  :rtype: main function
   """
   print("[*]Start of database initialization")
   my_db = connect_db(HOST, PASSWORD, SERVER)

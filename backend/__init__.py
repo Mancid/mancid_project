@@ -8,8 +8,13 @@ from .main import MAIN as main_blueprint
 
 
 def create_app(config_name):
-  """
-  This function is the flask run
+  """This function is for the flask run we initialize
+  all configuration like templates folder and static
+  folder for the front-end, the DB and the neccesary for
+  login.
+
+  :returns: Flask app
+  :rtype: Flask
   """
   app = Flask(__name__,
               template_folder='../frontend/templates/',

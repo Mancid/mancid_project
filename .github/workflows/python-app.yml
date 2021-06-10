@@ -21,7 +21,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
+        python -m pip install --upgrade pip;
         pip install -r requirements.txt;
         pip install setuptools;
 
@@ -36,7 +36,6 @@ jobs:
         cd docs/
         make html
     
-
     - name: Commit files
       run: |
         echo ${{ github.ref }}
@@ -64,8 +63,8 @@ jobs:
       run: |
         pytest tests
 
-    - run: |
-        git fetch --prune --unshallow
+    # - run: |
+    #     git fetch --prune --unshallow
 
     - name: Deploy to heroku
       env:
@@ -73,5 +72,5 @@ jobs:
         HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       if: github.ref == 'refs/heads/main' && job.status == 'success'
       run: |
-        git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
+        git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/mancidparking.git
         git push heroku main -f
