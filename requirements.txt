@@ -14,3 +14,4 @@ psycopg2-binary
 recommonmark==0.7.1
 Sphinx==4.0.2
 sphinx-rtd-theme==0.5.2
+mock
