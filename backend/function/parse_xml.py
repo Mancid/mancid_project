@@ -33,8 +33,11 @@ def xml_parse_url(url):
 
 
 def create_dict(url):
-  """
-  This function return a dict
+  """ This function take all name of parking
+  and add in a dict with the values in xml_parse_url
+
+  :returns: dictionnary with all parking and all values from xml url
+  :rtype: dict
   """
   mydict = {}
   for parking, url in dict_url().items():

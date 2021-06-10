@@ -16,14 +16,22 @@ SCHED.add_job(main_db, 'interval', seconds=59)
 
 @MAIN.route('/')
 def index():
-  """Returns page index.html"""
+  """Returns page login.html
+
+  :returns: page login.html
+  :rtype: html
+  """
   return render_template('index.html')
 
 
 @MAIN.route('/profile')
 @login_required
 def profile():
-  """Returns page profile.html with name and email of the user"""
+  """Returns page profile.html with name and email of the user
+  
+  :returns: page profile.html
+  :rtype: html
+  """
   return render_template('profile.html', name=current_user.name,
                          mail=current_user.email)
 
@@ -31,8 +39,10 @@ def profile():
 @MAIN.route('/parking')
 @login_required
 def parking():
-  """
-  This function return parkings in jinja2 in the front
+  """This function return parkings in jinja2 in the front
+
+  :returns: list of parkings in parking.html
+  :rtype: jinja2
   """
   parkings = result_database(connect_db(HOST, PASSWORD, SERVER))
   now = datetime.now().strftime("%H:%M")
