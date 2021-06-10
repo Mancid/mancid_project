@@ -1,7 +1,6 @@
-import xml.etree.ElementTree as ET
-import urllib.request
 import logging
-from backend.function.dict_url import dict_url
+import urllib.request
+import xml.etree.ElementTree as ET
 
 
 def xml_parse_url(url):
@@ -32,7 +31,7 @@ def xml_parse_url(url):
   return res
 
 
-def create_dict(url):
+def create_dict(dict_url):
   """ This function take all name of parking
   and add in a dict with the values in xml_parse_url
 
@@ -40,6 +39,6 @@ def create_dict(url):
   :rtype: dict
   """
   mydict = {}
-  for parking, url in dict_url().items():
+  for parking, url in dict_url.items():
     mydict[parking] = xml_parse_url(url)
   return mydict

@@ -2,7 +2,7 @@ import configparser
 import logging
 
 
-def dict_url():
+def dict_url(conf):
   """Add all url from file url.ini with
   key = name of the parking end value is
   the url.
@@ -12,7 +12,7 @@ def dict_url():
   """
   url = configparser.ConfigParser()
   logging.debug("initializing the variable url")
-  url.read("url.ini")
+  url.read(conf)
   logging.debug("read the file")
   logging.debug("all url in file %s", list(url["url"]))
   res = {}

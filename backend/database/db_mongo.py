@@ -32,7 +32,7 @@ def insert_rows(database):
   :returns: inserts rows in the database
   :rtype: rows in database
   """
-  values = create_dict(dict_url())
+  values = create_dict(dict_url("url.ini"))
   logging.info("%s this is the values add in database", values)
   return database.insert(values)
 
@@ -55,7 +55,7 @@ def result_database(database):
   :rtype: dict
   """
   res = {}
-  for i in dict_url():
+  for i in dict_url("url.ini"):
     for rows in database.find({}, {i}):
       logging.info("this is all rows in database :  %s", rows)
       parking = i
