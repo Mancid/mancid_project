@@ -27,7 +27,7 @@ def insert_rows(database):
   mongodatabase
   database : is the database want to be inserted
   """
-  values = create_dict(dict_url())
+  values = create_dict(dict_url("url.ini"))
   logging.info("%s this is the values add in database", values)
   return database.insert(values)
 
@@ -44,7 +44,7 @@ def result_database(database):
   name in parking. They return a dict
   """
   res = {}
-  for i in dict_url():
+  for i in dict_url("url.ini"):
     for rows in database.find({}, {i}):
       logging.info("this is all rows in database :  %s", rows)
       parking = i
