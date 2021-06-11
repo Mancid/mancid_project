@@ -25,9 +25,10 @@ jobs:
         pip install -r requirements.txt;
         pip install setuptools;
 
-    - name: Run Pylint
+    - name: Python Pylint Github actions
+      uses: fylein/python-pylint-github-action@v1
       run: |
-        python lint.py --rcfile==simplon.rc --path ./backend --threshold 8
+        pylint --rcfile=simplon.rc backend --threshold 8
 
     - name: "Build Sphinx doc"
       env: 
