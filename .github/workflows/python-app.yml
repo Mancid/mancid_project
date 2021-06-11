@@ -27,7 +27,7 @@ jobs:
 
     - name: Run Pylint
       run: |
-        pylint --rcfile==simplon.rc --path ./backend --threshold 8
+        python lint.py --rcfile==simplon.rc --path ./backend --threshold 8
 
     - name: "Build Sphinx doc"
       env: 
