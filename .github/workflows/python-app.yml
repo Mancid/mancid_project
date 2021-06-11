@@ -26,7 +26,7 @@ jobs:
         pip install setuptools;
 
     - name: Python Pylint Github actions
-      uses: fylein/python-pylint-github-action@v1
+      # uses: fylein/python-pylint-github-action@v1
       run: |
         pylint --rcfile=simplon.rc backend --threshold 8
 
