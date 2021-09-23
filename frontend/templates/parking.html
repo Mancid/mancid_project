@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta http-equiv="refresh" content="359"/>
+  <link rel="stylesheet" href="./static/css/bootstrap.parking.css" />
+  <link rel="stylesheet" type= "text/css" href= './static/css/style_parking.css' />
+  <title>Parking Montpellier</title>
+
+          <a class="nav-link" href="https://github.com/mancid/parking_mtp.git/" target="_blank"><img id="github" src="./static/images/github.png"></img>
+          <a class="nav-link" href="https://mancid.github.io/data_parking_montpellier_login/" target="_blank"><img id="sphinx" src="./static/images/sphinxheader.png"></img></a>
+
+</head>
+
+<body>
+  <div class="jumbotron">
+    <div class="logo" style="display: block; text-align: left;">
+    <img id="logo" src="./static/images/logo.png">
+    <p class="lead">Nombres de places disponibles en temps réel des parkings souterrains de Montpellier</p></div>
+    
+    <span class="badge bg-primary rounded-pill">Actualis&eacute; &agrave; : {{now}}</span></div>
+   {% for parking, value in parkings.items() %}
+   
+   <ul class="list-group">
+    <li id="name_parking" class="list-group-item d-flex justify-content-between align-items-center"><h3>
+      {{ parking.replace( '_', ' ')}}
+    </h3>
+
+    <span id="free_place" class="badge bg-primary rounded-pill">Dispo : {{value[0].get('Free')}}</span>
+    <div class="progress">
+<div class="progress-bar bg-success" role="progressbar" style="width:{{(value[0].get('Total') - value[0].get('Free'))/value[0].get('Total') * 100}}%;" aria-valuenow={{value[0].get('Free')}} aria-valuemin="0" aria-valuemax={{value[0].get('Total')}}></div>
+    </div>
+    <a href="https://www.google.com/maps/dir//{{value[1].replace(' ', '+')}})" target="_blank"><img id="google-maps"  src="./static/images/google_maps.png"></a></div>
+  </span>
+ </li>
+ {% endfor %}
+</body>
+<footer>        
+  
+
+<figure>
+  <blockquote class="blockquote">
+    <p class="mb-0">© MANCID 2021</p>
+  
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    Source : <cite title="Source Title"><a href="https://data.montpellier3m.fr/dataset/disponibilite-des-places-dans-les-parkings-de-montpellier-mediterranee-metropole" target="_blank">Ville de Montpellier ❤️</a></cite>
+  </figcaption>
+</figure>
+</footer>

@@ -1,0 +1,140 @@
+body{
+  background-image : url(../images/background.jpg);
+  background-size : 200%;
+}
+
+.navbar-item{
+  font-size:large;
+  margin-right: 1px;
+  margin-left: 15px;
+  }
+
+.progress{
+  width:250px !important;
+  height:10px !important;
+  background-color:#2c9c48;
+  margin: 15px;
+}
+.badge.bg-primary{
+  margin-top: 50px;
+  margin-left: 30px;
+  line-height: 3;
+  font-size:1.2em;
+  border-radius:2em;
+  border: 2px solid;
+  border-color: #615d5de5;
+  color:#615d5de5;
+  
+}
+.bg-success {
+  background-color: #cd0200 !important
+}
+#dispo.badge.bg-success {
+  background-color: #2c9c48 !important ;}
+
+.hero.is-primary {
+  background-color: #243370;
+    color: #fff;
+  }
+
+#google-maps{
+  width: 45px;
+  background-color: #ebedf1e6;
+  border: 2px solid #fff !important;
+  border-radius: 3em;
+
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  
+}
+
+#google-maps:hover{
+  transform : scale(1.1);
+}
+
+.bg-primary{
+  background-color: #bebfbf  !important;
+}
+
+#logo {
+  width:300px;
+  border-radius: 200px;
+  margin: 70px;
+}
+
+.lead {
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+.secondary {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.badge.bg-primary.rounded-pill {
+  margin-left: 10%;
+}
+
+.badge.bg-primary {
+    line-height: 3;
+    font-size: 1.2em;
+    border-radius: 5em;
+    border: 2px solid;
+    border-color: #fff !important;
+    color: #ffffff;
+    background-color: #12264ee6 !important;
+    display: block ruby;
+
+}
+
+.mb-0 {
+  margin: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.blockquote-footer {
+  text-align: center;
+}
+
+#github{
+  width:40px;
+  display: block;
+  padding-top: -1rem;
+}
+
+#sphinx{
+  width: 150px;
+  padding-top: 0.5rem;
+}
+
+.collapse:not(.show) {
+  min-width: 30px;
+  display: block;
+}
+
+#name_parking{
+  font-size:  0.8em;
+margin: 7px;
+opacity: 80%;
+background-color: #031d38;
+}
+
+#free_place{
+font-size: 1em !important;
+margin-top: 5px;
+margin-left: auto;
+margin-right: 20px;
+}
+}
+
+h1{
+  display: block ruby;
+  font-size: 2em;
+}

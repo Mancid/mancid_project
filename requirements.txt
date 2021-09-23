@@ -1,0 +1,19 @@
+flake8
+pytest
+requests
+apscheduler
+flask
+flask-cors
+flask-sqlalchemy
+flask-login
+sqla-wrapper
+pymongo[tls, srv]
+jinja2
+gunicorn
+#psycopg2
+#psycopg2-binary
+recommonmark==0.7.1
+Sphinx==4.0.2
+sphinx-rtd-theme==0.5.2
+mock
+pylint

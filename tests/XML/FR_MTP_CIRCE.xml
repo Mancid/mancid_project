@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?> 
+<park>
+	<DateTime>2021-04-12T05:00:10</DateTime>
+	<Name>CIRC</Name>
+	<Status>Open</Status>
+	<Free>1345</Free>
+	<Total>1500</Total>
+</park>
