@@ -97,10 +97,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-backend.auth">backend.auth module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-backend.main">backend.main module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-backend.models">backend.models module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-backend">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backend-auth-module">backend.auth module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backend-main-module">backend.main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backend-models-module">backend.models module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -200,171 +200,17 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-backend.auth">
-<span id="backend-auth-module"></span><h2>backend.auth module<a class="headerlink" href="#module-backend.auth" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="backend.auth.login">
-<span class="sig-prename descclassname"><span class="pre">backend.auth.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#backend.auth.login" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns page login.html</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>page login.html</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>html</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="backend.auth.login_post">
-<span class="sig-prename descclassname"><span class="pre">backend.auth.</span></span><span class="sig-name descname"><span class="pre">login_post</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#backend.auth.login_post" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function return page login.html
-If not user : try again
-If user : return page parking.html</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>if user return parking, if not user try again</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="backend.auth.logout">
-<span class="sig-prename descclassname"><span class="pre">backend.auth.</span></span><span class="sig-name descname"><span class="pre">logout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#backend.auth.logout" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function logout the user.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>logout the user</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>logout user</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="backend.auth.signup">
-<span class="sig-prename descclassname"><span class="pre">backend.auth.</span></span><span class="sig-name descname"><span class="pre">signup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#backend.auth.signup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns page signup.html</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>signup.html</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>html</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="backend.auth.signup_post">
-<span class="sig-prename descclassname"><span class="pre">backend.auth.</span></span><span class="sig-name descname"><span class="pre">signup_post</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#backend.auth.signup_post" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function create a user with email, name and password.
-The user is recorde in the database.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>create user with email, name and password</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>post method</p>
-</dd>
-</dl>
-</dd></dl>
-
+<div class="section" id="backend-auth-module">
+<h2>backend.auth module<a class="headerlink" href="#backend-auth-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-backend.main">
-<span id="backend-main-module"></span><h2>backend.main module<a class="headerlink" href="#module-backend.main" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="backend.main.index">
-<span class="sig-prename descclassname"><span class="pre">backend.main.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#backend.main.index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns page login.html</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>page login.html</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>html</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="backend.main.profile">
-<span class="sig-prename descclassname"><span class="pre">backend.main.</span></span><span class="sig-name descname"><span class="pre">profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#backend.main.profile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns page profile.html with name and email of the user</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>page profile.html</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>html</p>
-</dd>
-</dl>
-</dd></dl>
-
+<div class="section" id="backend-main-module">
+<h2>backend.main module<a class="headerlink" href="#backend-main-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-backend.models">
-<span id="backend-models-module"></span><h2>backend.models module<a class="headerlink" href="#module-backend.models" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="backend.models.User">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">backend.models.</span></span><span class="sig-name descname"><span class="pre">User</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#backend.models.User" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_login.mixins.UserMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Model</span></code></p>
-<p>This class create a model for a user with Column id, email
-password and name</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Database models for Users</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Database SQLAlchemy</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="backend.models.User.email">
-<span class="sig-name descname"><span class="pre">email</span></span><a class="headerlink" href="#backend.models.User.email" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="backend.models.User.id">
-<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#backend.models.User.id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="backend.models.User.name">
-<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#backend.models.User.name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="backend.models.User.password">
-<span class="sig-name descname"><span class="pre">password</span></span><a class="headerlink" href="#backend.models.User.password" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="backend-models-module">
+<h2>backend.models module<a class="headerlink" href="#backend-models-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-backend">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-backend" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="backend.create_app">
-<span class="sig-prename descclassname"><span class="pre">backend.</span></span><span class="sig-name descname"><span class="pre">create_app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#backend.create_app" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function is for the flask run we initialize
-all configuration like templates folder and static
-folder for the front-end, the DB and the neccesary for
-login.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Flask app</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Flask</p>
-</dd>
-</dl>
-</dd></dl>
-
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
