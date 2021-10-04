@@ -3,8 +3,7 @@ from backend.database import db_refresh
 from flask import Flask
 from flask_cors import CORS
 from flask_login import LoginManager
-from backend.models import DB
-from backend.models import User
+from backend.models import DB, User
 from apscheduler.schedulers.background import BackgroundScheduler
 from .auth import AUTH as auth_blueprint
 from .main import MAIN as main_blueprint
