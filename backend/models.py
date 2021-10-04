@@ -3,9 +3,9 @@ import psycopg2
 from sqla_wrapper import SQLAlchemy
 from flask_login import UserMixin
 
-url = os.environ["DATABASE_SQL"]
+DATABASE_URL = os.environ["DATABASE_URL"]
 # DB = psycopg2.connect(f"postgresql://{url}", sslmode='require')
-DB = SQLAlchemy(f"postgresql://{url}")
+DB = SQLAlchemy(f"postgresql://{DATABASE_URL}")
 # DB = SQLAlchemy("sqlite:///db.sqlite")
 # this connects to a database either on Heroku or on localhost
 
