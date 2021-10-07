@@ -1,106 +1,108 @@
-# auth.py
-
-from flask import Blueprint, render_template, redirect, url_for, request, flash
-from flask_login import login_user, logout_user, login_required
-from werkzeug.security import generate_password_hash, check_password_hash
-from .models import User, DB
+import os
+import bcrypt
+import pymongo
+from flask import Blueprint, render_template, redirect, url_for, request, session
 
 
 AUTH = Blueprint('auth', __name__)
+# app.secret_key = "testing"
+
+HOST = os.environ["HOST_MONGO_DB"]
+PASSWORD = os.environ["PASSWORD_MONGO_DB"]
+AUTH_SERVER = os.environ["AUTH_SERVER"]
+
+client = pymongo.MongoClient(f"mongodb+srv://{HOST}:{PASSWORD}@{AUTH_SERVER}?retryWrites=true&w=majority")
+
+# get the database name
+db = client.get_database('total_records')
+# get the particular collection that contains the data
+records = db.register
+
+# assign URLs to have a particular route
 
 
-@AUTH.route('/login')
+@AUTH.route("/login", methods=["POST", "GET"])
 def login():
-  """Returns page login.html
+    message = 'Please login to your account'
+    if "email" in session:
+        return redirect(url_for("auth.logged_in"))
 
-  :returns: page login.html
-  :rtype: html
-  """
-  return render_template('login.html')
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
 
-
-@AUTH.route('/login', methods=['POST'])
-def login_post():
-  """This function return page login.html
-  If not user : try again
-  If user : return page parking.html
-
-  :returns: if user return parking, if not user try again
-  :rtype: bool
-  """
-  email = request.form.get('email')
-  password = request.form.get('password')
-  remember = True if request.form.get('remember') else False
-
-  user = DB.query(User).filter_by(email=email).first()
-
-  # check if user actually exists
-  # take the user supplied password, hash it,
-  # and compare it to the hashed password in database
-  if not user or not check_password_hash(user.password, password):
-    flash('Please check your login credentials and try again.')
-    # if user doesn't exist or password is wrong, reload the page
-    return redirect(url_for('auth.login'))
-
-  # if the above check passes, then we know the user has the right credentials
-  login_user(user, remember=remember)
-  flash('You have been logged in.')
-  return redirect(url_for('main.parking'))
+        # check if email exists in database
+        email_found = records.find_one({"email": email})
+        if email_found:
+            email_val = email_found['email']
+            passwordcheck = email_found['password']
+            # encode the password and check if it matches
+            if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
+                session["email"] = email_val
+                return redirect(url_for('auth.logged_in'))
+            else:
+                if "email" in session:
+                    return redirect(url_for("auth.logged_in"))
+                message = 'Wrong password'
+                return render_template('login.html', message=message)
+        else:
+            message = 'Email not found'
+            return render_template('login.html', message=message)
+    return render_template('login.html', message=message)
 
 
-@AUTH.route('/signup')
-def signup():
-  """Returns page signup.html
-  
-  :returns: signup.html
-  :rtype: html
-  """
-  return render_template('signup.html')
+@AUTH.route("/signin", methods=['post', 'get'])
+def signin():
+    message = ''
+    # if method post in index
+    if "email" in session:
+        return redirect(url_for("auth.logged_in"))
+    if request.method == "POST":
+        user = request.form.get("fullname")
+        email = request.form.get("email")
+        password1 = request.form.get("password1")
+        password2 = request.form.get("password2")
+        # if found in database showcase that it's found
+        user_found = records.find_one({"name": user})
+        email_found = records.find_one({"email": email})
+        if user_found:
+            message = 'There already is a user by that name'
+            return render_template('index.html', message=message)
+        if email_found:
+            message = 'This email already exists in database'
+            return render_template('index.html', message=message)
+        if password1 != password2:
+            message = 'Passwords should match!'
+            return render_template('index.html', message=message)
+        else:
+            # hash the password and encode it
+            hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
+            # assing them in a dictionary in key value pairs
+            user_input = {'name': user, 'email': email, 'password': hashed}
+            # insert it in the record collection
+            records.insert_one(user_input)
+            
+            # find the new created account and its email
+            user_data = records.find_one({"email": email})
+            new_email = user_data['email']
+            # if registered redirect to logged in as the registered user
+            return render_template('logged_in.html', email=new_email)
+    return render_template('signin.html')
 
 
-@AUTH.route('/signup', methods=['POST'])
-def signup_post():
-  """This function create a user with email, name and password.
-  The user is recorde in the database.
-
-  :returns: create user with email, name and password
-  :rtype: post method
-  """
-  email = request.form.get('email')
-  name = request.form.get('name')
-  password = request.form.get('password')
-
-  user = DB.query(User).filter_by(email=email).first()
-  # if this returns a user, then the email already exists in database
-
-  if user:
-    # if a user is found,
-    # we want to redirect back to signup page so user can try again
-    flash('Email address already exists')
-    return redirect(url_for('auth.signup'))
-
-  # create new user with the form data.
-  # Hash the password so plaintext version isn't saved.
-  new_user = User(email=email,
-                  name=name,
-                  password=generate_password_hash(password, method='sha256'))
-
-  # add the new user to the database
-  DB.add(new_user)
-  DB.commit()
-
-  # code to validate and add user to database goes here
-  return redirect(url_for('auth.login'))
+@AUTH.route('/logged_in')
+def logged_in():
+    if "email" in session:
+        email = session["email"]
+        return render_template('logged_in.html', email=email)
+    else:
+        return redirect(url_for("auth.login"))
 
 
-@AUTH.route('/logout')
-@login_required
+@AUTH.route("/logout", methods=["POST", "GET"])
 def logout():
-  """This function logout the user.
-
-  :returns: logout the user
-  :rtype: logout user
-  """
-  logout_user()
-  flash('You have been logged out.')
-  return redirect(url_for('main.index'))
+    if "email" in session:
+        session.pop("email", None)
+        return render_template("signout.html")
+    else:
+        return render_template('index.html')
