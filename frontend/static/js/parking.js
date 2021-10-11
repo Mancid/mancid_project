@@ -1,17 +1,15 @@
-const StationsList = document.getElementById('StationsList');
+const ParkingsList = document.getElementById('ParkingsList');
 const searchBar = document.getElementById('searchBar');
 let ResultList = [];
 
 searchBar.addEventListener('keyup', (e) => {
     const searchString = e.target.value.toLowerCase();
-    const filteredStation = ResultList.filter((result) => {
+    const filteredParking = ResultList.filter((result) => {
         return (
-            result.Station.toLowerCase().includes(searchString) ||
-            // result.Direction.toLowerCase().includes(searchString) ||
-            result.Ligne.toLowerCase().includes(searchString)
+            result.Parking.toLowerCase().includes(searchString)
         );
     });
-    displayResults(filteredStation);
+    displayResults(filteredParking);
 });
 
 const displayResults = (results) => {
@@ -19,23 +17,25 @@ const displayResults = (results) => {
     .map((result) => {
         return `
         <li class="result">
-        <h2>${result.Station}</h2>
+        <h2>${result.Parking}</h2>
         <p>
-        </br>Ligne: ${result.Ligne}
-        </br>Direction: ${result.Direction}
-        </br>&#9201; Délai: ${result.Delai} min
+        </br>Status: <span class="badge bg-info">${result.Status}</span>
+        </br>Dispo: ${result.Free}
+        </br><div class="progress">
+        </br><div class="progress-bar bg-success" role="progressbar" style="width:${((result.Total - result.Free) / result.Total) * 100}%;" aria-valuenow=${result.Free} aria-valuemin="0" aria-valuemax=${result.Total}></div>
+        </div>
         </p>
         <a href="https://www.google.com/maps/dir//${result.Adresse}" target="_blank"><img id="google-maps"  src="./static/images/google_maps.png"></a>
         </li>
         `;
     })
     .join('');
-    StationsList.innerHTML = htmlString;
+    ParkingsList.innerHTML = htmlString;
 };
 
 const loadresults = async () => {
     try {
-        const res = await fetch('http://localhost:5000/api/tram');
+        const res = await fetch('http://localhost:5000/api/parking');
         ResultList = await res.json();
         displayResults(ResultList);
     } 

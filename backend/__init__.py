@@ -19,10 +19,10 @@ def create_app(config_name):
     :returns: Flask app
     :rtype: Flask
     """
-
+    db_refresh.refresh()
     SCHED = BackgroundScheduler(daemon=True)
     SCHED.start()
-    SCHED.add_job(db_refresh.refresh, 'interval', seconds=59)
+    SCHED.add_job(db_refresh.refresh, 'interval', seconds=120)
 
     app = Flask(__name__,
                 template_folder='../frontend/templates/',

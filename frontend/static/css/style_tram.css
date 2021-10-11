@@ -1,67 +1,95 @@
-.navbar-brand .img{
-    height: 50px;
+body {
+    font-family: sans-serif;
+    background-image : url(../images/background_mtp1.jpg);
+    background-size : 100%;
+    background-repeat: repeat-x;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    top: 0;
+    background-attachment: fixed;
 }
 
-nav a img{
-    margin: auto;
+/* * {
+    box-sizing: border-box;
+} */
+
+h1 {
+    color: #eee;
+    margin-bottom: 5px;
 }
 
-nav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 2%;
+.container {
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 1000px;
+    text-align: center;
 }
 
-.navbar-expand-lg{
-    justify-content: center;
+#StationsList {
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 20px;
 }
 
-#button_montpellier{
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-    height: 70px;
-    width: 120px;
-    margin-right: 70px;
-    margin-left: 100px;
-    margin-bottom: 40px;
-    margin-top: 50px;
-    border-radius: 5%;
+#ParkingsList {
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    grid-gap: 20px;
 }
 
-#button_rennes{
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-    height: 70px;
-    width: 120px;
-    margin-right: 70px;
-    margin-bottom: 40px;
-    margin-top: 50px;
-    border-radius: 5%;
+.result {
+    list-style-type: none;
+    background-color: #eaeaea;
+    border-radius: 3px;
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+        'name image'
+        'house image';
+    text-align: left;
 }
 
-
-#match-list{
-    margin-top: 50px;
+.result > h2 {
+    grid-area: name;
+    margin-bottom: 0px;
 }
 
-#search, #result{
-
-    border-radius: 2%;
+.result > p {
+    grid-area: house;
+    margin: 0;
+    margin-top: -18px;
 }
 
-.character > img {
+/* .result > img {
     max-height: 100px;
     grid-area: image;
-}
+} */
 
 #searchBar {
-    width: 100%;
+    width: 980px;
     height: 32px;
     border-radius: 3px;
     border: 1px solid #eaeaea;
     padding: 5px 10px;
     font-size: 12px;
+}
+
+#searchWrapper {
+    position: relative;
+}
+
+#searchWrapper::after {
+    content: '🔍';
+    position: absolute;
+    top: 7px;
+    right: 15px;
+}
+
+img {
+    max-height: 75px;
+    grid-area: image;
 }

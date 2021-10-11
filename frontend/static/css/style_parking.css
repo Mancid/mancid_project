@@ -1,20 +1,34 @@
-body{
-  background-image : url(../images/background.jpg);
-  background-size : 200%;
+body {
+  font-family: sans-serif;
+  background-image : url(../images/background_mtp1.jpg);
+  background-repeat: repeat-x;
+  height: 100%;
+  left: 0;
+  opacity: 1;
+  top: 0;
+  background-attachment: fixed;
 }
 
-.navbar-item{
+h1 {
+  display: block ruby;
+  font-size: 2em;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.navbar-item {
   font-size:large;
   margin-right: 1px;
   margin-left: 15px;
-  }
+}
 
-.progress{
+.progress {
   width:250px !important;
   height:10px !important;
   background-color:#2c9c48;
   margin: 15px;
 }
+
 .badge.bg-primary{
   margin-top: 50px;
   margin-left: 30px;
@@ -29,26 +43,30 @@ body{
 .bg-success {
   background-color: #cd0200 !important
 }
+
+.bg-info {
+  background-color: #2c9c48 !important
+}
+
 #dispo.badge.bg-success {
-  background-color: #2c9c48 !important ;}
+  background-color: #2c9c48 !important ;
+}
 
 .hero.is-primary {
   background-color: #243370;
     color: #fff;
-  }
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+}
 
 #google-maps{
   width: 45px;
   background-color: #ebedf1e6;
   border: 2px solid #fff !important;
   border-radius: 3em;
-
-}
-
-.navbar-expand-lg .navbar-nav .nav-link {
-  padding-right: 0.75rem;
-  padding-left: 0.75rem;
-  
 }
 
 #google-maps:hover{
@@ -65,12 +83,6 @@ body{
   margin: 70px;
 }
 
-.lead {
-  font-size: 1rem;
-  font-weight: 300;
-  text-align: center;
-}
-
 .secondary {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -79,7 +91,8 @@ body{
 }
 
 .badge.bg-primary.rounded-pill {
-  margin-left: 10%;
+  margin-left: 16%;
+  margin-right: 16%;
 }
 
 .badge.bg-primary {
@@ -91,7 +104,6 @@ body{
     color: #ffffff;
     background-color: #12264ee6 !important;
     display: block ruby;
-
 }
 
 .mb-0 {
@@ -99,19 +111,9 @@ body{
   margin-bottom: 50px;
   text-align: center;
 }
+
 .blockquote-footer {
   text-align: center;
-}
-
-#github{
-  width:40px;
-  display: block;
-  padding-top: -1rem;
-}
-
-#sphinx{
-  width: 150px;
-  padding-top: 0.5rem;
 }
 
 .collapse:not(.show) {
@@ -119,22 +121,94 @@ body{
   display: block;
 }
 
-#name_parking{
+#name_parking {
   font-size:  0.8em;
-margin: 7px;
-opacity: 80%;
-background-color: #031d38;
+  margin: 7px;
+  opacity: 80%;
+  background-color: #031d38;
 }
 
-#free_place{
-font-size: 1em !important;
-margin-top: 5px;
-margin-left: auto;
-margin-right: 20px;
-}
+#free_place {
+  font-size: 1em !important;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: 20px;
 }
 
-h1{
-  display: block ruby;
-  font-size: 2em;
+/* ADD TRAM.CSS HERE */
+
+
+/* * {
+  box-sizing: border-box;
+} */
+
+.container {
+  padding: 40px;
+  margin: 0 auto;
+  /* max-width: 1000px; */
+  text-align: center;
+}
+
+#ParkingsList {
+  padding-top: 20px;
+  padding-inline-start: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  grid-gap: 20px;
+}
+
+.result {
+  list-style-type: none;
+  background-color: #eaeaea;
+  border-radius: 3px;
+  padding: 10px 20px;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-template-areas:
+      'name image'
+      'house image';
+  text-align: left;
+}
+
+.result > h2 {
+  grid-area: name;
+  margin-bottom: 0px;
+  color: black;
+}
+
+.result > p {
+  grid-area: house;
+  margin: 0;
+  margin-top: -18px;
+  color: black;
+}
+
+/* .result > img {
+  max-height: 100px;
+  grid-area: image;
+} */
+
+#searchBar {
+  width: 100%;
+  height: 32px;
+  border-radius: 3px;
+  border: 1px solid #eaeaea;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+#searchWrapper {
+  position: relative;
+}
+
+#searchWrapper::after {
+  content: '🔍';
+  position: absolute;
+  top: 7px;
+  right: 15px;
+}
+
+img {
+  max-height: 75px;
+  grid-area: image;
 }

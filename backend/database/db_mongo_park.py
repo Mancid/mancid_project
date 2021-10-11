@@ -48,14 +48,7 @@ def result_database(database, conf):
     :returns: a dict with all rows in database
     :rtype: dict
     """
-    res = {}
-    for i in dict_url(conf):
-        for rows in database.find({}, {i}):
-            logging.info("this is all rows in database :  %s", rows)
-            parking = i
-            res[parking] = rows.get(i)
-    logging.info("this is your dict with the value in db %s", res)
-    return dict(sorted(res.items()))
+    return list(database.find({}, {"_id": 0}))
 
 
 def main_db(host, password, parking_server, conf):

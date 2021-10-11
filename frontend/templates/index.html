@@ -3,6 +3,7 @@
 {% extends "base.html" %}
 {% block title %}Accueil{% endblock %}
 
+{% block welcome %}<h1 class="title">Welcome to</h1>{% endblock %}
 {% block content %}
 <div class="column is-4 is-offset-4">
   {% with messages = get_flashed_messages() %}
@@ -13,22 +14,9 @@
   {% endif %}
   {% endwith %}
 </div>
-<h1 class="title">
-  Welcome to Data_parking_Montpellier Project
-</h1>
-<h2 class="subtitle">
-  by Mancid.
-</h2>
-</br>
 <div>
-  <h3 class="title">
-    <a href="/parking">Parking</a>
-  </h3>
-</div>
-</br>
-<div>
-  <h3 class="title">
-    <a href="/tram">Tram</a>
-  </h3>
+  <h3 class="title"><a href="/parking">&#128664; Parking</a></h3>
+  <h3 class="title"><a href="/tram">&#x1F68A; Tram</a></h3>
+  <h3 class="title"><a href="/"><a>&#128692; Vélo</a></h3>
 </div>
 {% endblock %}

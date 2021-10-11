@@ -1,0 +1,42 @@
+.container {
+    /* max-width: 1000px; */
+    padding-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center
+}
+body {
+    color: white;
+    font-family: sans-serif;
+    background-image : url(../images/background_mtp1.jpg);
+    background-size : 100%;
+    background-repeat: repeat-x;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    top: 0;
+    background-attachment: fixed;
+}
+#github {
+    width:25px;
+    display: block;
+    padding-top: -1rem;
+}
+#sphinx {
+    width: 90px;
+    padding-top: 0.5rem;
+}
+h1 {
+    color: white;
+    text-align: center;
+}
+h2 {
+    color: red;
+    text-align: center;
+}
+
+#logo {
+    width:200px;
+    border-radius: 200px;
+    margin: 20px;
+  }
