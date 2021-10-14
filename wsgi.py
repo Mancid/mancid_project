@@ -1,5 +1,5 @@
-import backend
 import os
+import backend
 
 
 app = backend.create_app('production')
