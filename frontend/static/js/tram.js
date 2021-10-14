@@ -20,8 +20,7 @@ const displayResults = (results) => {
         return `
         <li class="result">
         <h2>${result.Station}</h2>
-        <p>
-        </br>Ligne: ${result.Ligne}
+        <p>Ligne: ${result.Ligne}
         </br>Direction: ${result.Direction}
         </br>&#9201; Délai: ${result.Delai} min
         </p>

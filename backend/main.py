@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, session, redirect, url_for
 from flask_login import login_required, current_user
+from flask import Blueprint, render_template, session, redirect, url_for
 
 
 MAIN = Blueprint('main', __name__)
@@ -27,3 +27,13 @@ def profile():
         return render_template('profile.html', email=email)
     else:
         return redirect(url_for("auth.login"))
+
+
+@MAIN.route('/date')
+def date():
+    """Returns page login.html
+
+    :returns: page login.html
+    :rtype: html
+    """
+    return render_template('date.html')

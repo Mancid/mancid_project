@@ -1,5 +1,4 @@
 body {
-    font-family: sans-serif;
     background-image : url(../images/background_mtp1.jpg);
     background-size : 100%;
     background-repeat: repeat-x;
@@ -10,13 +9,22 @@ body {
     background-attachment: fixed;
 }
 
-/* * {
-    box-sizing: border-box;
-} */
-
 h1 {
-    color: #eee;
+    display: block ruby;
+    font-size: 2em;
+    color: white;
     margin-bottom: 5px;
+}
+  
+h2 {
+    color: black;
+    font-weight: bolder;
+    text-align: left;
+    font-size: 1.4rem;
+}
+
+p {
+    color: black;
 }
 
 .container {
@@ -27,18 +35,14 @@ h1 {
 }
 
 #StationsList {
-    padding-inline-start: 0;
+    padding-inline-start:0;
+    padding-inline-end: 0;
+    padding-top: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     grid-gap: 20px;
 }
 
-#ParkingsList {
-    padding-inline-start: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-    grid-gap: 20px;
-}
 
 .result {
     list-style-type: none;
@@ -51,11 +55,13 @@ h1 {
         'name image'
         'house image';
     text-align: left;
+    opacity: 0.92;
 }
 
 .result > h2 {
     grid-area: name;
     margin-bottom: 0px;
+    color: black;
 }
 
 .result > p {
@@ -70,12 +76,10 @@ h1 {
 } */
 
 #searchBar {
-    width: 980px;
-    height: 32px;
+    width: 100%;
     border-radius: 3px;
     border: 1px solid #eaeaea;
     padding: 5px 10px;
-    font-size: 12px;
 }
 
 #searchWrapper {
@@ -92,4 +96,15 @@ h1 {
 img {
     max-height: 75px;
     grid-area: image;
+}
+
+#logo {
+    width:200px;
+    border-radius: 200px;
+    margin: 20px;
+    max-height: 100%;
+}
+
+#date_heure {
+    margin-right: 42.5rem !important;
 }

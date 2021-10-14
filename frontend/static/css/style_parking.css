@@ -16,6 +16,13 @@ h1 {
   margin-bottom: 5px;
 }
 
+h2 {
+  color: black;
+  font-weight: bolder;
+  text-align: left;
+  font-size: 2.14rem;
+}
+
 .navbar-item {
   font-size:large;
   margin-right: 1px;
@@ -78,9 +85,9 @@ h1 {
 }
 
 #logo {
-  width:300px;
+  width:200px;
   border-radius: 200px;
-  margin: 70px;
+  margin: 20px;
 }
 
 .secondary {
@@ -168,6 +175,7 @@ h1 {
       'name image'
       'house image';
   text-align: left;
+  opacity: 0.92;
 }
 
 .result > h2 {
@@ -209,6 +217,10 @@ h1 {
 }
 
 img {
-  max-height: 75px;
+  /* max-height: 75px; */
   grid-area: image;
+}
+
+#date_heure {
+  margin-right: 40rem !important;
 }

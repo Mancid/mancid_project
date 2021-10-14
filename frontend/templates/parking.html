@@ -1,21 +1,15 @@
 <!-- templates/parking.html -->
 
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Prochains Passages</title>
-        <link rel="stylesheet" href="./static/css/bootstrap.css" />
-        <link rel="stylesheet" href="./static/css/style_parking.css">
-    </head>
+{% extends "base.html" %}
+{% block title %}PARKING MTP{% endblock %}
+{% block head %}
+{{super()}}
+    <link rel="stylesheet" href="./static/css/style_parking.css">
+{% endblock %}
     <body>
         <span class="badge bg-primary rounded-pill">Actualis&eacute; &agrave; : {{now}}</span></div>        
-        <div class="container">
-            <h1>&#128664; Nombres de places disponibles en temps réel des parkings</h1> 
-                <h1>souterrains de Montpellier &#128664;</h1>
+        {% block container %}
+            <h1>&#128664; Places disponibles en temps réel des parkings souterrains de Montpellier &#128664;</h1>
             <div id="searchWrapper">
                 <input type="text" name="searchBar" id="searchBar" placeholder="Entrez un parking"/>
                 </br>
@@ -23,16 +17,5 @@
             <ul id="ParkingsList"></ul>
         </div>
         <script src="./static/js/parking.js"></script>
+        {%endblock %}
     </body>
-    <footer>        
-        <figure>
-          <blockquote class="blockquote">
-            <p class="mb-0">© MANCID 2021</p>
-          
-          </blockquote>
-          <figcaption class="blockquote-footer">
-    Source : <cite title="Source Title"><a href="https://data.montpellier3m.fr/dataset/disponibilite-des-places-dans-les-parkings-de-montpellier-mediterranee-metropole" target="_blank">Ville de Montpellier ❤️</a></cite>
-          </figcaption>
-        </figure>
-    </footer>
-</html>

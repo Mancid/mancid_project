@@ -3,65 +3,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% block head %}
     <title>{% block title %}{%endblock %}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpg" href="./static/images/logo.png" />
+    {% block meta %}{%endblock %}
+    <link rel="stylesheet" media="screen" href="./static/css/bootstrap.base.css"  >
+    <!-- <link rel="stylesheet" media="screen" href="./static/css/bootstrap.css"  > -->
     <link rel="stylesheet" type= "text/css" href= './static/css/style_base.css' />
-    <link rel="stylesheet" media="screen" href="./static/css/bootstrap.css"  >
-    <script src="./static/js/base.js"></script>
-    {% endblock %}
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Home</a>
-          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+            </button>
+            <a class="navbar-brand" href="/">Home</a>
+          </div>
       
-          <div class="navbar-collapse collapse" id="navbarColor02" >
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item"><a class="nav-link" href="/parking">Parking</a></li>
-              <li class="nav-item"><a class="nav-link" href="/tram">Tram</a></li>
-              <li class="nav-item"><a class="nav-link" href="/velo">Vélo</a></li>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <!-- <li class="active"><a href="#">Link</a></li> -->
+              <li><a href="/parking">Parking</a></li>
+              <li><a href="/tram">Tram</a></li>
+              <li><a href="/velo">Vélo</a></li>
             </ul>
 
-            <form class="d-flex">
-              <input class="form-control me-sm-2" type="text" placeholder="Search">
-              <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default">Rechercher</button>
             </form>
-
-            <ul class="nav navbar-nav navbar-center">
-              <span id="date_heure"></span>
-              <script type="text/javascript">window.onload = date_heure('date_heure');</script>
-            </ul>
-
+            
             <ul class="nav navbar-nav navbar-right">
               <li><a class="nav-link" href="https://github.com/Mancid/mancid_project/" target="_blank"><img id="github" src="./static/images/github.png"></img></a></li>
               <li><a class="nav-link" href="https://mancid.github.io/data_parking_montpellier_login/" target="_blank"><img id="sphinx" src="./static/images/sphinxheader.png"></img></a></li>
             </ul>
-
+            
             <ul class="nav navbar-nav navbar-right">
-              <li class="nav-item dropdown">
-                <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Users</a> -->
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/profile">Profile</a>
-                  <a class="dropdown-item" href="/login">Login</a>
-                  <a class="dropdown-item" href="/signin">Sign In</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/signout">Logout</a>
-                </div>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{ url_for('main.profile') }}">Profile</a></li>
+                  <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                  <li><a href="{{ url_for('auth.signin') }}">Sign Up</a></li>
+                  <li class="divider"></li>
+                  <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                </ul>
               </li>
             </ul>
-            
-          </div>
-        </div>
-    </nav>
-      
-      
+
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
       {% block welcome %}{%endblock %}
       <div>
         <div class="logo" style="text-align: center;">
@@ -69,7 +64,7 @@
       </div>
       </div>
     <div class="container">
-        {% block container %}{% endblock %}
+      {% block container %}{% endblock %}
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -89,4 +84,3 @@
     </figure>
 </footer>
 </html>
-

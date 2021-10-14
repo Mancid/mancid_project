@@ -1,10 +1,10 @@
 <!-- templates/index.html -->
 
 {% extends "base.html" %}
-{% block title %}Accueil{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block welcome %}<h1 class="title">Welcome to</h1>{% endblock %}
-{% block content %}
+{% block container %}
 <div class="column is-4 is-offset-4">
   {% with messages = get_flashed_messages() %}
   {% if messages %}
@@ -17,6 +17,7 @@
 <div>
   <h3 class="title"><a href="/parking">&#128664; Parking</a></h3>
   <h3 class="title"><a href="/tram">&#x1F68A; Tram</a></h3>
-  <h3 class="title"><a href="/"><a>&#128692; Vélo</a></h3>
+  <h3 class="title"><a href="/velo">&#128692; Vélo</a></h3>
+  <h3 class="title"><a href="/date">&#128692; Date</a></h3>
 </div>
 {% endblock %}

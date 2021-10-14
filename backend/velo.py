@@ -4,19 +4,19 @@ from backend.database.db_mongo_tram import result_db
 from flask import Blueprint, jsonify, render_template
 from backend.database.db_refresh import HOST, PASSWORD, TRAM_SERVER
 
-TRAM = Blueprint('tram', __name__)
+VELO = Blueprint('velo', __name__)
 
 
-@TRAM.route('/tram')
-def tram():
+@VELO.route('/velo')
+def velo():
     """This function return parkings in jinja2 in the front
     :returns: list of parkings in parking.html
     :rtype: jinja2
     """
-    return render_template('tram.html')
+    return render_template('velo.html')
 
 
-@TRAM.route('/api/tram')
+@VELO.route('/api/velo')
 def views():
     connexion = connect_db(HOST, PASSWORD, TRAM_SERVER, "tram")
     return jsonify(result_db(connexion))

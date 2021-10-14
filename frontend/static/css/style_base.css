@@ -39,4 +39,17 @@ h2 {
     width:200px;
     border-radius: 200px;
     margin: 20px;
-  }
+}
+
+footer {
+    text-align:center;
+    bottom:0;
+    width:100%;
+    display:inline-block;
+    vertical-align:top;
+    font-size:13px;
+}
+
+#date_heure {
+    margin-right: 42.5rem !important;
+}
