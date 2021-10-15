@@ -34,7 +34,7 @@ const displayResults = (results) => {
 
 const loadresults = async () => {
     try {
-        const res = await fetch('https://0.0.0.0:${process.PORT}/api/tram');
+        const res = await fetch('https://0.0.0.0/api/tram');
         ResultList = await res.json();
         displayResults(ResultList);
     } 
