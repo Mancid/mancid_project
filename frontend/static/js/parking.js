@@ -1,3 +1,5 @@
+console.log(process.env.PORT)
+alert(console.log(process.env.PORT))
 const ParkingsList = document.getElementById('ParkingsList');
 const searchBar = document.getElementById('searchBar');
 let ResultList = [];
