@@ -37,7 +37,7 @@ const displayResults = (results) => {
 
 const loadresults = async () => {
     try {
-        const res = await fetch('https://0.0.0.0/api/parking');
+        const res = await fetch('https://mancid.herokuapp.com/api/parking');
         ResultList = await res.json();
         displayResults(ResultList);
     } 
