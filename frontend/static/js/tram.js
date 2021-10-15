@@ -35,6 +35,7 @@ const displayResults = (results) => {
 const loadresults = async () => {
     try {
         const res = await fetch('https://mancid.herokuapp.com/api/tram');
+        // const res = await fetch('http://localhost:5000/api/tram');
         ResultList = await res.json();
         displayResults(ResultList);
     } 
@@ -43,4 +44,4 @@ const loadresults = async () => {
     }
 };
 
-loadresults();
+loadresults().sort();
