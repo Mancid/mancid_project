@@ -1,4 +1,3 @@
-port = app.listen(process.env.PORT || 3000)
 const StationsList = document.getElementById('StationsList');
 const searchBar = document.getElementById('searchBar');
 let ResultList = [];
@@ -35,8 +34,7 @@ const displayResults = (results) => {
 
 const loadresults = async () => {
     try {
-        const res = await fetch('http://0.0.0.0:'+ port + '/api/tram');
-        displayResults(port);
+        const res = await fetch('http://0.0.0.0:9375/api/tram');
         ResultList = await res.json();
         displayResults(ResultList);
     } 
