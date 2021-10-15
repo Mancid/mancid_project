@@ -1,4 +1,4 @@
-const port = process.env.PORT
+port = app.listen(process.env.PORT || 3000)
 const ParkingsList = document.getElementById('ParkingsList');
 const searchBar = document.getElementById('searchBar');
 let ResultList = [];
