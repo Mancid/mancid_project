@@ -1,3 +1,4 @@
+const port = process.env.PORT
 const StationsList = document.getElementById('StationsList');
 const searchBar = document.getElementById('searchBar');
 let ResultList = [];
@@ -34,7 +35,7 @@ const displayResults = (results) => {
 
 const loadresults = async () => {
     try {
-        const res = await fetch('https://mancid.herokuapp.com/api/tram');
+        const res = await fetch('http://0.0.0.0:'+ port + '/api/tram');
         ResultList = await res.json();
         displayResults(ResultList);
     } 

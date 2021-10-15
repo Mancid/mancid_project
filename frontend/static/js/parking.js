@@ -1,5 +1,4 @@
-console.log(process.env.PORT)
-alert(console.log(process.env.PORT))
+const port = process.env.PORT
 const ParkingsList = document.getElementById('ParkingsList');
 const searchBar = document.getElementById('searchBar');
 let ResultList = [];
@@ -37,7 +36,7 @@ const displayResults = (results) => {
 
 const loadresults = async () => {
     try {
-        const res = await fetch('https://mancid.herokuapp.com/api/parking');
+        const res = await fetch('http://0.0.0.0:'+ port + '/api/parking');
         ResultList = await res.json();
         displayResults(ResultList);
     } 
