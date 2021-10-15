@@ -36,6 +36,7 @@ const displayResults = (results) => {
 const loadresults = async () => {
     try {
         const res = await fetch('http://0.0.0.0:'+ port + '/api/tram');
+        displayResults(port);
         ResultList = await res.json();
         displayResults(ResultList);
     } 
