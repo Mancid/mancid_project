@@ -1,20 +1,22 @@
 import os
 import bcrypt
 import pymongo
-from flask import Blueprint, render_template, redirect, url_for, request, session
+from flask import Blueprint, render_template, redirect, url_for, \
+                  request, session
 
 
-AUTH = Blueprint('auth', __name__)
+AUTH = Blueprint("auth", __name__)
 # app.secret_key = "testing"
 
 HOST = os.environ["HOST_MONGO_DB"]
 PASSWORD = os.environ["PASSWORD_MONGO_DB"]
 AUTH_SERVER = os.environ["AUTH_SERVER"]
 
-client = pymongo.MongoClient(f"mongodb+srv://{HOST}:{PASSWORD}@{AUTH_SERVER}?retryWrites=true&w=majority")
+client = pymongo.MongoClient(f"mongodb+srv://{HOST}:{PASSWORD}@{AUTH_SERVER}"\
+                             "?retryWrites=true&w=majority")
 
 # get the database name
-db = client.get_database('total_records')
+db = client.get_database("total_records")
 # get the particular collection that contains the data
 records = db.register
 
@@ -23,7 +25,7 @@ records = db.register
 
 @AUTH.route("/login", methods=["POST", "GET"])
 def login():
-    message = 'Please login to your account'
+    message = "Please login to your account"
     if "email" in session:
         return redirect(url_for("auth.logged_in"))
 
@@ -34,26 +36,27 @@ def login():
         # check if email exists in database
         email_found = records.find_one({"email": email})
         if email_found:
-            email_val = email_found['email']
-            passwordcheck = email_found['password']
+            email_val = email_found["email"]
+            passwordcheck = email_found["password"]
             # encode the password and check if it matches
-            if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
+            if bcrypt.checkpw(password.encode("utf-8"), passwordcheck):
                 session["email"] = email_val
-                return redirect(url_for('auth.logged_in'))
+                return redirect(url_for("auth.logged_in"))
             else:
                 if "email" in session:
                     return redirect(url_for("auth.logged_in"))
-                message = 'Wrong password'
-                return render_template('login.html', message=message)
-        else:
-            message = 'Email not found'
-            return render_template('login.html', message=message)
-    return render_template('login.html', message=message)
+                message = "Wrong password"
+                return render_template("login.html", message=message)
+
+        message = "Email not found"
+        return render_template("login.html", message=message)
+
+    return render_template("login.html", message=message)
 
 
-@AUTH.route("/signin", methods=['post', 'get'])
+@AUTH.route("/signin", methods=["post", "get"])
 def signin():
-    message = ''
+    message = ""
     # if method post in index
     if "email" in session:
         return redirect(url_for("auth.logged_in"))
@@ -62,41 +65,42 @@ def signin():
         email = request.form.get("email")
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
-        # if found in database showcase that it's found
+        # if found in database showcase that it"s found
         user_found = records.find_one({"name": user})
         email_found = records.find_one({"email": email})
         if user_found:
-            message = 'There already is a user by that name'
-            return render_template('index.html', message=message)
+            message = "There already is a user by that name"
+            return render_template("index.html", message=message)
         if email_found:
-            message = 'This email already exists in database'
-            return render_template('index.html', message=message)
+            message = "This email already exists in database"
+            return render_template("index.html", message=message)
         if password1 != password2:
-            message = 'Passwords should match!'
-            return render_template('index.html', message=message)
-        else:
-            # hash the password and encode it
-            hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
-            # assing them in a dictionary in key value pairs
-            user_input = {'name': user, 'email': email, 'password': hashed}
-            # insert it in the record collection
-            records.insert_one(user_input)
-            
-            # find the new created account and its email
-            user_data = records.find_one({"email": email})
-            new_email = user_data['email']
-            # if registered redirect to logged in as the registered user
-            return render_template('logged_in.html', email=new_email)
-    return render_template('signin.html')
+            message = "Passwords should match!"
+            return render_template("index.html", message=message)
+
+        # hash the password and encode it
+        hashed = bcrypt.hashpw(password2.encode("utf-8"), bcrypt.gensalt())
+        # assing them in a dictionary in key value pairs
+        user_input = {"name": user, "email": email, "password": hashed}
+        # insert it in the record collection
+        records.insert_one(user_input)
+
+        # find the new created account and its email
+        user_data = records.find_one({"email": email})
+        new_email = user_data["email"]
+        # if registered redirect to logged in as the registered user
+        return render_template("logged_in.html", email=new_email)
+
+    return render_template("signin.html")
 
 
-@AUTH.route('/logged_in')
+@AUTH.route("/logged_in")
 def logged_in():
     if "email" in session:
         email = session["email"]
-        return render_template('logged_in.html', email=email)
-    else:
-        return redirect(url_for("auth.login"))
+        return render_template("logged_in.html", email=email)
+
+    return redirect(url_for("auth.login"))
 
 
 @AUTH.route("/logout", methods=["POST", "GET"])
@@ -104,5 +108,5 @@ def logout():
     if "email" in session:
         session.pop("email", None)
         return render_template("signout.html")
-    else:
-        return render_template('index.html')
+
+    return render_template("index.html")

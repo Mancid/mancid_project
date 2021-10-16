@@ -1,9 +1,9 @@
 import os
-from backend.database import db_refresh
 from flask import Flask
 from flask_cors import CORS
-# from flask_login import LoginManager
 from apscheduler.schedulers.background import BackgroundScheduler
+from backend.database import db_refresh
+# from flask_login import LoginManager
 from .auth import AUTH as auth_blueprint
 from .main import MAIN as main_blueprint
 from .parking import PARKING as parking_blueprint
@@ -23,18 +23,18 @@ def create_app(config_name):
     # db_refresh.refresh()
     SCHED = BackgroundScheduler(daemon=True)
     SCHED.start()
-    SCHED.add_job(db_refresh.refresh, 'interval', seconds=120)
+    SCHED.add_job(db_refresh.refresh, "interval", seconds=120)
 
     app = Flask(__name__,
-                template_folder='../frontend/templates/',
-                static_folder='../frontend/static')
+                template_folder="../frontend/templates/",
+                static_folder="../frontend/static")
 
     CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-    app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
+    app.config["SECRET_KEY"] = os.environ["SECRET_KEY"]
 
     # login_manager = LoginManager()
-    # login_manager.login_view = 'auth.login'
+    # login_manager.login_view = "auth.login"
     # login_manager.init_app(app)
 
     # @login_manager.user_loader

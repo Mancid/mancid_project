@@ -10,7 +10,6 @@ def dict_url(conf):
     :returns: dictionnary with all parking and url
     :rtype: dict
     """
-    name = ""
     url = configparser.ConfigParser()
     logging.debug("initializing the variable url")
     url.read(conf)
