@@ -126,6 +126,6 @@ dmypy.json
 .pyre/
 
 # 
-.vscode
+.vscode/
 
 Var.sh
