@@ -25,6 +25,10 @@ records = db.register
 
 @AUTH.route("/login", methods=["POST", "GET"])
 def login():
+    """This function return the form for login
+    :returns: front login of login.html
+    :rtype: html
+    """
     message = "Please login to your account"
     if "email" in session:
         return redirect(url_for("auth.logged_in"))
@@ -56,6 +60,10 @@ def login():
 
 @AUTH.route("/signin", methods=["post", "get"])
 def signin():
+    """This function return the form for signin
+    :returns: front signin of signin.html
+    :rtype: html
+    """
     message = ""
     # if method post in index
     if "email" in session:
@@ -96,6 +104,10 @@ def signin():
 
 @AUTH.route("/logged_in")
 def logged_in():
+    """This function return the logged_in
+    :returns: front logged_in of logged_in.html
+    :rtype: html
+    """
     if "email" in session:
         email = session["email"]
         return render_template("logged_in.html", email=email)
@@ -105,6 +117,10 @@ def logged_in():
 
 @AUTH.route("/logout", methods=["POST", "GET"])
 def logout():
+    """This function return the logout
+    :returns: front logout of logout.html
+    :rtype: html
+    """
     if "email" in session:
         session.pop("email", None)
         return render_template("signout.html")
