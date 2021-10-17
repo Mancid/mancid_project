@@ -24,3 +24,12 @@ def profile():
         return render_template("profile.html", email=email)
 
     return redirect(url_for("auth.login"))
+
+
+@MAIN.route("/index-bis")
+def index_bis():
+    """Returns page login.html
+    :returns: page login.html
+    :rtype: html
+    """
+    return render_template("index-bis.html")

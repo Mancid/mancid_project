@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Prochains horaires de passages</title>
+
+    </head>
+    <body>
+  
+    <div class="container mt-3">
+            <div class=" m-auto">
+            <div class="text-center mb-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand"><img src="multi.gif" height="100"></a></div>
+        <div class="container mt-5">
+            <div class="row">
+            <div class="col-md-6 m-auto">
+            <h3 class="text-center mb-3">
+            <i class="fas fa-subway"></i>  Prochains horaires
+            de passages de vos transports
+            </h3>
+            <div class ="form-goup">
+              <button type="button" id ="button_montpellier" value="Montpellier" class="btn btn-outline-secondary">Montpellier</button>
+              <button type="button" id="button_rennes" value="Rennes" class="btn btn-outline-secondary">Rennes</button></div>
+               <div class ="m-goup">
+
+            <input
+                type="text"
+                id="search"
+                class="form-control"
+                placeholder="Entrez une station"
+            />
+            </div>
+            <div id="match-list">
+                <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Ligne</th>
+            <th scope="col">Station</th>
+            <th scope="col">Direction</th>
+            <th scope="col">Prochain départ</th>
+          </tr>
+        </thead>
+                </table>
+        </div>
+
+        <div id="result">
+          
+        </div>
+
+
+
+      <script>
+        const btnm = document.getElementById('button_montpellier');
+        const btnr = document.getElementById('button_rennes');
+
+        const green = btn => {
+            console.log(btn)
+            btn.style.backgroundColor = "green"
+            btn.style.color = "white"
+            if (btn == btnm) {
+                btnr.style.backgroundColor = "white"
+                btnr.style.color = "grey"
+            }
+            else if (btn == btnr) {
+                btnm.style.backgroundColor = "white"
+                btnm.style.color = "grey"
+            }
+            };
+
+        btnm.addEventListener('click', () => green(btnm));
+        btnr.addEventListener('click', () => green(btnr));
+              </script>
+    </body>
+</html>

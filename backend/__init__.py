@@ -8,6 +8,7 @@ from .auth import AUTH as auth_blueprint
 from .main import MAIN as main_blueprint
 from .parking import PARKING as parking_blueprint
 from .tram import TRAM as tram_blueprint
+from .bus import BUS as bus_blueprint
 from .velo import VELO as velo_blueprint
 
 
@@ -54,6 +55,9 @@ def create_app(config_name):
 
     # blueprint for non-auth parts of app
     app.register_blueprint(tram_blueprint)
+
+    # blueprint for non-auth parts of app
+    app.register_blueprint(bus_blueprint)
 
     # blueprint for non-auth parts of app
     app.register_blueprint(velo_blueprint)

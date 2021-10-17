@@ -1,0 +1,106 @@
+body {
+    background-image : url(../images/background_mtp1.jpg);
+    background-size : 100%;
+    background-repeat: repeat-x;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    top: 0;
+    background-attachment: fixed;
+}
+
+h1 {
+    display: block ruby;
+    font-size: 2em;
+    color: white;
+    margin-bottom: 5px;
+}
+  
+h2 {
+    color: black;
+    font-weight: bolder;
+    text-align: left;
+    font-size: 1.4rem;
+}
+
+p {
+    color: black;
+}
+
+.container {
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 1000px;
+    text-align: center;
+}
+
+#ArretsList {
+    padding-inline-start:0;
+    padding-inline-end: 0;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    grid-gap: 20px;
+}
+
+
+.result {
+    list-style-type: none;
+    background-color: #eaeaea;
+    border-radius: 3px;
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+        'name image'
+        'house image';
+    text-align: left;
+    opacity: 0.92;
+}
+
+.result > h2 {
+    grid-area: name;
+    margin-bottom: 0px;
+    color: black;
+}
+
+.result > p {
+    grid-area: house;
+    margin: 0;
+    margin-top: -18px;
+}
+
+/* .result > img {
+    max-height: 100px;
+    grid-area: image;
+} */
+
+#searchBar {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #eaeaea;
+    padding: 5px 10px;
+}
+
+#searchWrapper {
+    position: relative;
+}
+
+#searchWrapper::after {
+    content: '🔍';
+    position: absolute;
+    top: 7px;
+    right: 15px;
+}
+
+img {
+    max-height: 75px;
+    grid-area: image;
+}
+
+#logo {
+    width:200px;
+    border-radius: 200px;
+    margin: 20px;
+    max-height: 100%;
+}

@@ -1,0 +1,98 @@
+.container {
+    /* max-width: 1000px; */
+    padding-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center
+}
+body {
+    color: white;
+    font-family: sans-serif;
+    background-image : url(../images/background_mtp4.jpg);
+    background-size : 100%;
+    background-repeat: repeat-x;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    top: 0;
+    background-attachment: fixed;
+}
+#github {
+    width:25px;
+    display: block;
+    padding-top: -1rem;
+}
+#sphinx {
+    width: 90px;
+    padding-top: 0.5rem;
+}
+h1 {
+    color: white;
+    text-align: center;
+}
+h2 {
+    color: red;
+    text-align: center;
+}
+
+#logo {
+    width:200px;
+    border-radius: 200px;
+    margin: 20px;
+}
+
+footer {
+    text-align:center;
+    bottom:0;
+    width:100%;
+    display:inline-block;
+    vertical-align:top;
+    font-size:13px;
+}
+
+#date_heure {
+    margin-right: 11.5rem !important;
+}
+
+#display {
+    margin-right: 15rem !important;
+}
+
+#changer {
+    cursor: pointer;
+}
+
+video
+{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0
+}
+
+@media only screen and (max-width: 768px)
+{
+    video
+    {
+        display:none;
+    }
+
+
+    body
+    {
+        background-image: url(../images/background_mtp4.jpg);
+        background-repeat: no-repeat;
+        background-size: cover; 
+        margin: 0px 0px 0px 0px;
+    }
+
+
+    #main-container
+    {
+        width: 100%;
+        border-radius: initial;
+
+    }
+}

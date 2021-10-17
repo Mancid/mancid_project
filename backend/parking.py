@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, render_template
 from backend.database.db_result import result_db
 from backend.database.db_connect import connect_db
-from backend.variable import HOST, PASSWORD, PARKING_SERVER
+from backend.variable import HOST, PASSWORD, PARKING_DB
 
 PARKING = Blueprint("parking", __name__)
 
@@ -21,5 +21,5 @@ def views():
     :returns: list of parking in api
     :rtype: json
     """
-    connexion = connect_db(HOST, PASSWORD, PARKING_SERVER, "parking")
+    connexion = connect_db(HOST, PASSWORD, PARKING_DB, "parking")
     return jsonify(result_db(connexion))

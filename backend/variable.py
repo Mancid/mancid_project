@@ -3,10 +3,11 @@ import os
 
 HOST = os.environ["HOST_MONGO_DB"]
 PASSWORD = os.environ["PASSWORD_MONGO_DB"]
-PARKING_SERVER = os.environ["PARKING_SERVER"]
-TRAM_SERVER = os.environ["TRAM_SERVER"]
-VELO_SERVER = os.environ["VELO_SERVER"]
-AUTH_SERVER = os.environ["AUTH_SERVER"]
+PARKING_DB = os.environ["PARKING_DB"]
+TRAM_DB = os.environ["TRAM_DB"]
+BUS_DB = os.environ["BUS_DB"]
+VELO_DB = os.environ["VELO_DB"]
+AUTH_DB = os.environ["AUTH_DB"]
 
 URL_VELOCITY = "https://data.montpellier3m.fr/sites/default/files/ressources/TAM_MMM_VELOMAG.xml"
 

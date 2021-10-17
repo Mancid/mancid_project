@@ -3,7 +3,14 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 
+{% block head %}
+{{super()}}
+    <meta http-equiv="Refresh" content="120">
+    <link rel="stylesheet" href="./static/css/style_index.css">
+{% endblock %}
+
 {% block welcome %}<h1 class="title">Welcome to</h1>{% endblock %}
+
 {% block container %}
 <div class="column is-4 is-offset-4">
   {% with messages = get_flashed_messages() %}
@@ -14,10 +21,31 @@
   {% endif %}
   {% endwith %}
 </div>
-<div>
-  <h3 class="title"><a href="/parking">&#128664; Parking</a></h3>
-  <h3 class="title"><a href="/tram">&#x1F68A; Tram</a></h3>
-  <h3 class="title"><a href="/velo">&#128692; Vélo</a></h3>
-  <h3 class="title"><a href="/verdict">Verdict</a></h3>
+<div class ="form-goup">
+  <button type="button" id ="button_parking" value="Parking" class="btn btn-outline-secondary" onclick="parking()">&#128663; Parking</button>
+  <button type="button" id="button_tram" value="Tram" class="btn btn-outline-secondary" onclick="tram()">&#128651; Tram</button>
+  <button type="button" id ="button_bus" value="Bus" class="btn btn-outline-secondary" onclick="bus()">&#128652; Bus</button>
+  <button type="button" id ="button_velo" value="Velo" class="btn btn-outline-secondary" onclick="velo()">&#128690; Vélo</button>
+  <button type="button" id="button_verdict" value="Verdict" class="btn btn-outline-secondary" onclick="window.location.href='/verdict';">Verdict</button>
 </div>
+
+<div id="searchWrapper">
+  <input type="text" name="searchBar" id="searchBar" placeholder="Entrer un parking, un arrêt, une station"/>
+  </br>
+</div>
+<div class="container_parking">
+  <ul id="ParkingsList"></ul>
+</div>
+<div class="container_tram">
+  <ul id="StationsList"></ul>
+</div>
+<div class="container_bus">
+  <ul id="ArretsList"></ul>
+</div>
+<div class="container_velo">
+  <ul id="VelosList"></ul>
+</div>
+
+<script src="./static/js/index.js"></script>
+
 {% endblock %}

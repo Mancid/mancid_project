@@ -2,7 +2,7 @@ from operator import itemgetter
 from flask import Blueprint, jsonify, render_template
 from backend.database.db_result import result_db
 from backend.database.db_connect import connect_db
-from backend.variable import HOST, PASSWORD, TRAM_SERVER
+from backend.variable import HOST, PASSWORD, TRAM_DB
 
 TRAM = Blueprint("tram", __name__)
 
@@ -22,6 +22,6 @@ def views():
     :returns: list of tram in api
     :rtype: json
     """
-    connexion = connect_db(HOST, PASSWORD, TRAM_SERVER, "tram")
+    connexion = connect_db(HOST, PASSWORD, TRAM_DB, "tram")
     result_sorted = sorted(result_db(connexion), key=itemgetter("Delai"))
     return jsonify(result_sorted)

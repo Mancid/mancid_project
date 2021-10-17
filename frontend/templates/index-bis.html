@@ -1,0 +1,113 @@
+<!-- templates/index.html -->
+
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block head %}
+{{super()}}
+    <meta http-equiv="Refresh" content="120">s
+{% endblock %}
+
+{% block welcome %}<h1 class="title">Welcome to</h1>{% endblock %}
+
+{% block container %}
+<div class="column is-4 is-offset-4">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      <div class="notification is-success">
+          {{ messages[0] }}
+      </div>
+  {% endif %}
+  {% endwith %}
+</div>
+<div class ="form-goup">
+  <button type="button" id ="button_parking" value="Parking" class="btn btn-outline-secondary">&#128663; Parking</button>
+  <button type="button" id="button_tram" value="Tram" class="btn btn-outline-secondary">&#128651; Tram</button>
+  <button type="button" id ="button_bus" value="Bus" class="btn btn-outline-secondary">&#128652; Bus</button>
+  <button type="button" id ="button_velo" value="Velo" class="btn btn-outline-secondary">&#128690; Vélo</button>
+  <button type="button" id="button_verdict" value="Verdict" class="btn btn-outline-secondary">Verdict</button>
+</div>
+<div>
+  <h3 class="title"><a href="/parking">&#128663; Parking</a></h3>
+  <h3 class="title"><a href="/tram">&#128651; Tram</a></h3>
+  <h3 class="title"><a href="/bus">&#128652; Bus</a></h3>
+  <h3 class="title"><a href="/velo">&#128690; Vélo</a></h3>
+  <h3 class="title"><a href="/verdict">Verdict</a></h3>
+  <h3 class="title"><a href="/index-bis">Index-bis</a></h3>
+</div>
+
+<script>
+  const btnparking = document.getElementById('button_parking');
+const btntram = document.getElementById('button_tram');
+const btnbus = document.getElementById('button_bus');
+const btnvelo = document.getElementById('button_velo');
+const btnverdict = document.getElementById('button_verdict');
+
+
+const green = btn => {
+    console.log(btn)
+    btn.style.backgroundColor = "green"
+    btn.style.color = "white"
+    if (btn == btnparking) {
+        btntram.style.backgroundColor = "white"
+        btntram.style.color = "grey"
+        btnbus.style.backgroundColor = "white"
+        btnbus.style.color = "grey"
+        btnvelo.style.backgroundColor = "white"
+        btnvelo.style.color = "grey"
+        btnverdict.style.backgroundColor = "white"
+        btnverdict.style.color = "grey"
+    }
+    else if (btn == btntram) {
+        btnparking.style.backgroundColor = "white"
+        btnparking.style.color = "grey"
+        btnbus.style.backgroundColor = "white"
+        btnbus.style.color = "grey"
+        btnvelo.style.backgroundColor = "white"
+        btnvelo.style.color = "grey"
+        btnverdict.style.backgroundColor = "white"
+        btnverdict.style.color = "grey"
+    }
+    };
+    else if (btn == btnbus) {
+        btnparking.style.backgroundColor = "white"
+        btnparking.style.color = "grey"
+        btntram.style.backgroundColor = "white"
+        btntram.style.color = "grey"
+        btnvelo.style.backgroundColor = "white"
+        btnvelo.style.color = "grey"
+        btnverdict.style.backgroundColor = "white"
+        btnverdict.style.color = "grey"
+    }
+    };
+    else if (btn == btnvelo) {
+        btnparking.style.backgroundColor = "white"
+        btnparking.style.color = "grey"
+        btntram.style.backgroundColor = "white"
+        btntram.style.color = "grey"
+        btnbus.style.backgroundColor = "white"
+        btnbus.style.color = "grey"
+        btnverdict.style.backgroundColor = "white"
+        btnverdict.style.color = "grey"
+    }
+    };
+    else if (btn == btnverdict) {
+        btnparking.style.backgroundColor = "white"
+        btnparking.style.color = "grey"
+        btntram.style.backgroundColor = "white"
+        btntram.style.color = "grey"
+        btnbus.style.backgroundColor = "white"
+        btnbus.style.color = "grey"
+        btnvelo.style.backgroundColor = "white"
+        btnvelo.style.color = "grey"
+    }
+    };
+
+btnparking.addEventListener('click', () => green(btnparking));
+btntram.addEventListener('click', () => green(btntram));
+btnbus.addEventListener('click', () => green(btnbus));
+btnvelo.addEventListener('click', () => green(btnvelo));
+btnverdict.addEventListener('click', () => green(btnverdict));
+</script>
+
+{% endblock %}

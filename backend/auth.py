@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, redirect, url_for, \
                   request, session
 from backend.database.db_connect import connect_db
 from backend.function_velo.all_favorite import all_favorite
-from backend.variable import HOST, PASSWORD, VELO_SERVER, AUTH_SERVER
+from backend.variable import HOST, PASSWORD, VELO_DB, AUTH_DB
 
 
 AUTH = Blueprint("auth", __name__)
@@ -15,7 +15,7 @@ def login():
     :returns: front login of login.html
     :rtype: html
     """
-    records = connect_db(HOST, PASSWORD, AUTH_SERVER, "authentication")
+    records = connect_db(HOST, PASSWORD, AUTH_DB, "authentication")
     message = "Please login to your account"
     if "email" in session:
         return redirect(url_for("auth.logged_in"))
@@ -51,7 +51,7 @@ def signin():
     :returns: front signin of signin.html
     :rtype: html
     """
-    records = connect_db(HOST, PASSWORD, AUTH_SERVER, "authentication")
+    records = connect_db(HOST, PASSWORD, AUTH_DB, "authentication")
     message = ""
     # if method post in index
     if "email" in session:
@@ -92,7 +92,7 @@ def signin():
         # if registered redirect to logged in as the registered user
         return render_template("logged_in.html", email=new_email)
 
-    choice = all_favorite(HOST, PASSWORD, VELO_SERVER, "velo")
+    choice = all_favorite(HOST, PASSWORD, VELO_DB, "velo")
     return render_template("signin.html", choice=choice)
 
 

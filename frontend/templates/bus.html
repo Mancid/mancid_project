@@ -1,0 +1,20 @@
+<!-- templates/tram.html -->
+
+{% extends "base.html" %}
+{% block title %}TRAM MTP{% endblock %}
+{% block head %}
+{{super()}}
+<meta http-equiv="Refresh" content="120">
+<link rel="stylesheet" href="./static/css/style_bus.css">
+{%endblock%}
+
+{% block container %}
+            <h1>&#128653; Prochains horaires de passages de vos transports &#128653;</h1>
+            <div id="searchWrapper">
+                <input type="text" name="searchBar" id="searchBar" placeholder="Entrez un arrêt"/>
+                </br>
+            </div>
+            <ul id="ArretsList"></ul>
+        </div>
+        <script src="./static/js/bus.js"></script>
+{%endblock %}
