@@ -1,7 +1,7 @@
 import logging
 
 
-def insert_db(database, data, *conf):
+def insert_db(database, data):
     """This function insert rows in the database
     mongodatabase
 

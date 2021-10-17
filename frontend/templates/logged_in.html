@@ -1,11 +1,25 @@
 <!-- templates/logged_in.html -->
 
-
 {% extends "base.html" %}
-{% block title %}Logged in {% endblock %}
-{% block meta %}<meta http-equiv="refresh" content="5; url=/" />{%endblock %}
+{% block title %}Logged in{% endblock %}
+
+{% block head %}
+{{super()}}
+    <meta http-equiv="refresh" content="5; url=/" />
+{%endblock %}
+
 {% block container %}
+<div class="column is-4 is-offset-4">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      <div class="notification is-success">
+          {{ messages[0] }}
+      </div>
+  {% endif %}
+  {% endwith %}
+</div>
 <p>Hello You have Logged in as {{ email }}</p>
 
-<p> Redirection vers l'accueil dans 5 secondes. </p>
+<p>Redirection vers l'accueil dans 5 secondes. </p>
+</h1>
 {% endblock %}

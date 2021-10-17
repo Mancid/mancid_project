@@ -4,10 +4,10 @@
 {% block title %}PARKING MTP{% endblock %}
 {% block head %}
 {{super()}}
+    <meta http-equiv="Refresh" content="120">
     <link rel="stylesheet" href="./static/css/style_parking.css">
 {% endblock %}
     <body>
-        <span class="badge bg-primary rounded-pill">Actualis&eacute; &agrave; : {{now}}</span></div>        
         {% block container %}
             <h1>&#128664; Places disponibles en temps réel des parkings souterrains de Montpellier &#128664;</h1>
             <div id="searchWrapper">
@@ -15,7 +15,6 @@
                 </br>
             </div>
             <ul id="ParkingsList"></ul>
-        </div>
         <script src="./static/js/parking.js"></script>
         {%endblock %}
     </body>

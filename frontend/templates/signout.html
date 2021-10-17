@@ -1,9 +1,11 @@
 <!-- templates/signout.html -->
 
-
 {% extends "base.html" %}
 {% block title %}Register System{% endblock %}
-{% block meta %}<meta http-equiv="refresh" content="5; url=/" />{%endblock %}
+{% block head %}
+{{super()}}
+    <meta http-equiv="refresh" content="5; url=/" />
+{%endblock %}
 
 {% block container %}
 <h1>You are signed out!</h1>

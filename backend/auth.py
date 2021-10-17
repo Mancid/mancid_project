@@ -1,26 +1,12 @@
-import os
 import bcrypt
-import pymongo
 from flask import Blueprint, render_template, redirect, url_for, \
                   request, session
+from backend.database.db_connect import connect_db
+from backend.function_velo.all_favorite import all_favorite
+from backend.variable import HOST, PASSWORD, VELO_SERVER, AUTH_SERVER
 
 
 AUTH = Blueprint("auth", __name__)
-# app.secret_key = "testing"
-
-HOST = os.environ["HOST_MONGO_DB"]
-PASSWORD = os.environ["PASSWORD_MONGO_DB"]
-AUTH_SERVER = os.environ["AUTH_SERVER"]
-
-client = pymongo.MongoClient(f"mongodb+srv://{HOST}:{PASSWORD}@{AUTH_SERVER}"\
-                             "?retryWrites=true&w=majority")
-
-# get the database name
-db = client.get_database("total_records")
-# get the particular collection that contains the data
-records = db.register
-
-# assign URLs to have a particular route
 
 
 @AUTH.route("/login", methods=["POST", "GET"])
@@ -29,6 +15,7 @@ def login():
     :returns: front login of login.html
     :rtype: html
     """
+    records = connect_db(HOST, PASSWORD, AUTH_SERVER, "authentication")
     message = "Please login to your account"
     if "email" in session:
         return redirect(url_for("auth.logged_in"))
@@ -64,6 +51,7 @@ def signin():
     :returns: front signin of signin.html
     :rtype: html
     """
+    records = connect_db(HOST, PASSWORD, AUTH_SERVER, "authentication")
     message = ""
     # if method post in index
     if "email" in session:
@@ -73,6 +61,7 @@ def signin():
         email = request.form.get("email")
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
+        favorite = request.form.get("favorite")
         # if found in database showcase that it"s found
         user_found = records.find_one({"name": user})
         email_found = records.find_one({"email": email})
@@ -85,11 +74,15 @@ def signin():
         if password1 != password2:
             message = "Passwords should match!"
             return render_template("index.html", message=message)
+        if favorite == "":
+            message = "Favorite not select ! Please select a favorite"
+            return render_template("index.html", message=message)
 
         # hash the password and encode it
         hashed = bcrypt.hashpw(password2.encode("utf-8"), bcrypt.gensalt())
         # assing them in a dictionary in key value pairs
-        user_input = {"name": user, "email": email, "password": hashed}
+        user_input = {"name": user, "email": email,
+                      "password": hashed, "favorite": favorite}
         # insert it in the record collection
         records.insert_one(user_input)
 
@@ -99,7 +92,8 @@ def signin():
         # if registered redirect to logged in as the registered user
         return render_template("logged_in.html", email=new_email)
 
-    return render_template("signin.html")
+    choice = all_favorite(HOST, PASSWORD, VELO_SERVER, "velo")
+    return render_template("signin.html", choice=choice)
 
 
 @AUTH.route("/logged_in")
@@ -115,7 +109,7 @@ def logged_in():
     return redirect(url_for("auth.login"))
 
 
-@AUTH.route("/logout", methods=["POST", "GET"])
+@AUTH.route("/signout", methods=["POST", "GET"])
 def logout():
     """This function return the logout
     :returns: front logout of logout.html

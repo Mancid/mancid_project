@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, render_template
 from backend.database.db_result import result_db
 from backend.database.db_connect import connect_db
-from backend.variable import HOST, PASSWORD, TRAM_SERVER
+from backend.function_velo.verdict import verdict, favorite
+from backend.variable import AUTH_SERVER, HOST, PASSWORD, VELO_SERVER
 
 VELO = Blueprint("velo", __name__)
 
@@ -21,5 +22,12 @@ def views():
     :returns: list of velomagg in api
     :rtype: json
     """
-    connexion = connect_db(HOST, PASSWORD, TRAM_SERVER, "tram")
+    connexion = connect_db(HOST, PASSWORD, VELO_SERVER, "velo")
     return jsonify(result_db(connexion))
+
+
+@VELO.route('/verdict')
+def verdict_funct():
+    location, velo, pos = favorite(HOST, PASSWORD, VELO_SERVER, "velo", AUTH_SERVER, "authentication")
+    verd = verdict()
+    return render_template('verdict.html', location=location, velo=velo, pos=pos, verd=verd)

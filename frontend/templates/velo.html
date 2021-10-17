@@ -1,35 +1,20 @@
 <!-- templates/tram.html -->
 
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Prochains Passages</title>
-        <link rel="stylesheet" href="./static/css/style_tram.css">
-    </head>
-    <body>
-        <div class="container">
-            <h1>&#x1F68A; Prochains horaires de passages de vos transports &#x1F68A;</h1>
+{% extends "base.html" %}
+{% block title %}VELO MTP{% endblock %}
+{% block head %}
+{{super()}}
+    <meta http-equiv="Refresh" content="120">
+    <link rel="stylesheet" href="./static/css/style_velo.css">
+{% endblock %}
+    <body>      
+        {% block container %}
+            <h1>&#128692; Vélos disponibles en temps réel sur Montpellier &#128692;</h1>
             <div id="searchWrapper">
-                <input type="text" name="searchBar" id="searchBar" placeholder="Entrez une station"/>
+                <input type="text" name="searchBar" id="searchBar" placeholder="Entrez un lieu"/>
                 </br>
             </div>
-            <ul id="StationsList"></ul>
-        </div>
-        <script src="./static/js/tram.js"></script>
+            <ul id="VelosList"></ul>
+        <script src="./static/js/velo.js"></script>
+        {%endblock %}
     </body>
-    <footer>        
-        <figure>
-          <blockquote class="blockquote">
-            <p class="mb-0">© MANCID 2021</p>
-          
-          </blockquote>
-          <figcaption class="blockquote-footer">
-            Source : <cite title="Source Title"><a href="https://data.montpellier3m.fr/dataset/offre-de-transport-tam-en-temps-reel" target="_blank">Ville de Montpellier ❤️</a></cite>
-          </figcaption>
-        </figure>
-    </footer>
-</html>

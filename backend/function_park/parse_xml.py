@@ -30,7 +30,7 @@ def xml_parse_url(url):
     return res
 
 
-def create_dict(dict_url):
+def dict_parking(dict_url):
     """ This function take all name of parking
     and add in a dict with the values in xml_parse_url
 

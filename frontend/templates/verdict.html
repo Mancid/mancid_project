@@ -1,0 +1,19 @@
+<!-- templates/verdict.html -->
+
+{% extends "base.html" %}
+
+{% block title %}Verdict{% endblock %}
+
+{% block container %}
+  <div>
+    {{ verd }}</br>
+    Ton vélomagg favoris est <a href="https://www.google.com/maps/dir//{{pos}})" target="_blank">{{location}}</a>,
+    {% if velo == 0 %}
+      dommage il reste 0 vélo
+    {% elif velo < 6 %}
+      dépêche toi il reste {{velo}} vélos disponible
+    {% else %}
+      il reste {{velo}} vélos de disponible
+    {% endif %}
+  </br>
+  {% endblock %}

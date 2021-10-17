@@ -18,7 +18,7 @@ def dict_tram():
                     data.append({'Ligne': row['route_short_name'],
                                  'Station': row['stop_name'],
                                  'Direction': row['trip_headsign'],
-                                 'Delai': str(round(int(row['delay_sec'])/60)),
+                                 'Delai': round(int(row['delay_sec'])/60),
                                  'Adresse': adress
                                  })
     return data

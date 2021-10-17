@@ -7,7 +7,6 @@ searchBar.addEventListener('keyup', (e) => {
     const filteredStation = ResultList.filter((result) => {
         return (
             result.Station.toLowerCase().includes(searchString) ||
-            // result.Direction.toLowerCase().includes(searchString) ||
             result.Ligne.toLowerCase().includes(searchString)
         );
     });
@@ -34,8 +33,8 @@ const displayResults = (results) => {
 
 const loadresults = async () => {
     try {
-        const res = await fetch('https://mancid.herokuapp.com/api/tram');
-        // const res = await fetch('http://localhost:5000/api/tram');
+        // const res = await fetch('https://mancid.herokuapp.com/api/tram');
+        const res = await fetch('http://localhost:5000/api/tram');
         ResultList = await res.json();
         displayResults(ResultList);
     } 
@@ -44,4 +43,4 @@ const loadresults = async () => {
     }
 };
 
-loadresults().sort();
+loadresults();

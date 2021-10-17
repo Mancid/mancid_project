@@ -1,5 +1,4 @@
 import requests
-# from config import TAM_CSV_URL
 from backend.function_tram.config import TAM_CSV_URL
 
 
@@ -31,5 +30,4 @@ def parse_csv(csv):
         for index, value in enumerate(line.split(';')):
             line_data[header[index]] = value
         structured_data.append(line_data)
-
     return structured_data
