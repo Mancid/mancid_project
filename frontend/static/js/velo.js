@@ -34,8 +34,8 @@ const displayResults = (results) => {
 
 const loadresults = async () => {
     try {
-        // const res = await fetch('https://mancid.herokuapp.com/api/velo');
-        const res = await fetch('http://localhost:5000/api/velo');
+        const res = await fetch('https://mancid.herokuapp.com/api/velo');
+        // const res = await fetch('http://localhost:5000/api/velo');
         ResultList = await res.json();
         displayResults(ResultList);
     } 
